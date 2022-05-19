@@ -1,5 +1,6 @@
 local options = {
 	showmode = false,
+	mouse = "nvi",
 	cursorline = true,
 	number = true,
 	relativenumber = true,
@@ -7,6 +8,7 @@ local options = {
 	ignorecase = true,
 	scrolloff = 8,
 	autochdir = true,
+	hidden = true,
 }
 
 for k, v in pairs(options) do
