@@ -116,3 +116,4 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
 --    },
 --  },
 } -- END_DEFAULT_OPTS
+vim.g.nvim_tree_respect_buf_cwd = 1

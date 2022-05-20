@@ -25,6 +25,8 @@ return require('packer').startup(function(use)
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
+
+  use 'mhinz/vim-startify'
   if packer_bootstrap then
     require('packer').sync()
   end
