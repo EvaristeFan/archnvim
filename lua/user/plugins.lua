@@ -64,6 +64,12 @@ return require('packer').startup(function(use)
     run = ":TSUpdate",
   }
 
+  -- Cmp completion
+  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+
   if packer_bootstrap then
     require('packer').sync()
   end
