@@ -55,6 +55,12 @@ return require('packer').startup(function(use)
     branch = 'v1', -- optional but strongly recommended
   }
 
+    -- Treesittetr
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end
