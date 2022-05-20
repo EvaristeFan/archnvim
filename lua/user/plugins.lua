@@ -10,6 +10,9 @@ return require('packer').startup(function(use)
   -- Use onedarkpro colorscheme
   use 'olimorris/onedarkpro.nvim'
 
+  -- onedarkpro
+  use 'navarasu/onedark.nvim'
+
   use "kyazdani42/nvim-web-devicons" -- icons
 
   use {
