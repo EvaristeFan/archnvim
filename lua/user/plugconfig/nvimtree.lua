@@ -79,8 +79,8 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
       use_system_clipboard = true,
       change_dir = {
         enable = true,
-        global = true,
-        restrict_above_cwd = true,
+        global = false,
+        restrict_above_cwd = false,
       },
       open_file = {
         quit_on_open = true,
