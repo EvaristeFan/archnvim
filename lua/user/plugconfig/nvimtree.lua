@@ -45,11 +45,11 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
 --    enable = true,
 --    auto_open = true,
 --  },
---  update_focused_file = {
---    enable = true,
---    update_cwd = true,
---    ignore_list = {},
---  },
+    update_focused_file = {
+      enable = true,
+      update_cwd = true,
+      ignore_list = {},
+    },
 --  ignore_ft_on_setup = {},
 --  system_open = {
 --    cmd = "",
@@ -116,4 +116,3 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
 --    },
 --  },
 } -- END_DEFAULT_OPTS
-vim.g.nvim_tree_respect_buf_cwd = 1

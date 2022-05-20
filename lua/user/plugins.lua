@@ -26,6 +26,21 @@ return require('packer').startup(function(use)
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
 
+  -- Telscope and extensions
+  use {
+  'nvim-telescope/telescope.nvim',
+  requires = { {'nvim-lua/plenary.nvim'} }
+  }
+  -- extensions of fzf native
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+  -- extensions of frecency
+  use {
+  "nvim-telescope/telescope-frecency.nvim",
+  config = function()
+    require"telescope".load_extension("frecency")
+  end,
+  requires = {"tami5/sqlite.lua"}
+  }
   use 'mhinz/vim-startify'
   if packer_bootstrap then
     require('packer').sync()
