@@ -1,5 +1,6 @@
 require('lualine').setup {
   options = {
+    theme = 'papercolor_light',
     icons_enabled = true,
     theme = 'auto',
     component_separators = { left = '', right = ''},
