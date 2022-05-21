@@ -1,3 +1,4 @@
+local homepath = vim.fn.expand"~"
 local options = {
 	showmode = false,
 	mouse = "nvi",
@@ -9,6 +10,10 @@ local options = {
 	scrolloff = 8,
 	autochdir = true,
 	hidden = true,
+	backup = true,
+	undofile = true,
+	backupdir = homepath.."/Document/backupdir",
+	undodir = homepath.."/Document/undofile",
 }
 
 for k, v in pairs(options) do

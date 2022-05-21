@@ -81,7 +81,10 @@ return require('packer').startup(function(use)
   }
   use "quangnguyen30192/cmp-nvim-ultisnips" 
 
-
+  -- vimtex
+  use { 'lervag/vimtex', opt = true, ft = { "tex", "bib"} }
+  -- surround vim
+  use 'tpope/vim-surround'
   if packer_bootstrap then
     require('packer').sync()
   end
