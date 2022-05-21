@@ -67,9 +67,20 @@ return require('packer').startup(function(use)
 
   -- Cmp completion
   use "hrsh7th/nvim-cmp"
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use 'honza/vim-snippets'
+  use {
+    "SirVer/ultisnips",
+     config = function()
+        -- optional call to setup (see customization section)
+        require("cmp_nvim_ultisnips").setup{}
+      end,
+  }
+  use "quangnguyen30192/cmp-nvim-ultisnips" 
+
 
   if packer_bootstrap then
     require('packer').sync()
