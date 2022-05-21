@@ -2,5 +2,4 @@
 --onedarkpro.setup({
 --})
 --onedarkpro.load()
-
 require('onedark').load()

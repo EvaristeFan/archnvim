@@ -63,6 +63,7 @@ return require('packer').startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
+  use 'neovim/nvim-lspconfig' -- Collection of configurations for the built-in LSP client
 
   -- Cmp completion
   use "hrsh7th/nvim-cmp"
