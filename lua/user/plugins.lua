@@ -37,8 +37,8 @@ return require('packer').startup(function(use)
 
   -- extensions of fzf native
   use {
-    'nvim-telescope/telescope-fzf-native.nvim', 
-    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' 
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   }
 
   -- extensions of frecency
@@ -52,7 +52,7 @@ return require('packer').startup(function(use)
 
   use 'mhinz/vim-startify'
 
-  -- Hop.nvim 
+  -- Hop.nvim
   use {
     'phaazon/hop.nvim',
     branch = 'v1', -- optional but strongly recommended
@@ -64,6 +64,9 @@ return require('packer').startup(function(use)
     run = ":TSUpdate",
   }
   use 'neovim/nvim-lspconfig' -- Collection of configurations for the built-in LSP client
+  use 'onsails/lspkind.nvim'
+  use 'arkav/lualine-lsp-progress'
+  use 'ray-x/lsp_signature.nvim'
 
   -- Cmp completion
   use "hrsh7th/nvim-cmp"
@@ -79,7 +82,7 @@ return require('packer').startup(function(use)
         require("cmp_nvim_ultisnips").setup{}
       end,
   }
-  use "quangnguyen30192/cmp-nvim-ultisnips" 
+  use "quangnguyen30192/cmp-nvim-ultisnips"
 
   -- vimtex
   use { 'lervag/vimtex', opt = true, ft = { "tex", "bib"} }
@@ -89,3 +92,4 @@ return require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
+

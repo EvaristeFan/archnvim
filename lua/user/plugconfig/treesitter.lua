@@ -4,7 +4,6 @@ require'nvim-treesitter.configs'.setup {
     disable = { "latex" },
   },
   indent = {
-    enable = true,
-    disable = { "lua" },
+    enable = false,
    }
 }

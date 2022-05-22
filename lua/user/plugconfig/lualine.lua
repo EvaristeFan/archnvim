@@ -2,7 +2,6 @@ require('lualine').setup {
   options = {
     theme = 'papercolor_light',
     icons_enabled = true,
-    theme = 'auto',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {},
@@ -11,7 +10,7 @@ require('lualine').setup {
   },
   sections = {
     lualine_a = {'mode'},
-    lualine_b = {'branch', 
+    lualine_b = {'branch',
       { 'diagnostics',
         sources = { 'nvim_lsp' },
 	sections = { 'error', 'warn', 'info', 'hint' },
@@ -19,7 +18,7 @@ require('lualine').setup {
         colored = true,           -- Displays diagnostics status in color if set to true.
     },
   },
-    lualine_c = {'filename',   
+    lualine_c = {'filename',
     {
     function()
     local msg = 'No Active Lsp'
@@ -37,12 +36,13 @@ require('lualine').setup {
     return msg
   end,
   icon = ' LSP:',
-  color = { fg = '#ffffff', gui = 'bold' },}
+  color = { fg = '#ffffff', gui = 'bold' },},
+  'lsp_progress'
   },
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
-  }, 
+  },
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
