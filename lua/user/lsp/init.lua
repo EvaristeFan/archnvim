@@ -8,9 +8,15 @@ vim.diagnostic.config({
     source = "always",
   },
 })
-vim.cmd [[autocmd! ColorScheme * highlight NormalFloat ctermbg=None ctermfg=None guifg=None guibg=None]]
 vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=None guibg=None]]
+local win = require('lspconfig.ui.windows')
+local _default_opts = win.default_opts
 
+win.default_opts = function(options)
+  local opts = _default_opts(options)
+  opts.border = 'rounded'
+  return opts
+end
 local border = {
   { "╭", "FloatBorder" },
   { "─", "FloatBorder" },
