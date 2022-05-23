@@ -18,7 +18,10 @@ require('lualine').setup {
         colored = true,           -- Displays diagnostics status in color if set to true.
     },
   },
-    lualine_c = {'filename',
+    lualine_c = {
+    { 'filename',
+      path = 3,
+    },
     {
     function()
     local msg = 'No Active Lsp'
