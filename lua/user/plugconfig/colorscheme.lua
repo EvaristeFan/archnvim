@@ -1,13 +1,28 @@
---local onedarkpro = require("onedarkpro")
---onedarkpro.setup({
-  --dark_theme = "onedark", -- The default dark theme
-  --options = {
-      --cursorline = true, -- Use cursorline highlighting?
-      --transparency = true, -- Use a transparent background?
-      --terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
-      --window_unfocussed_color = false, -- When the window is out of focus, change the normal background?
-  --}
---})
+local onedarkpro = require("onedarkpro")
+local markdown = {
+  TSTitle = { fg = "${orange}", style = "bold" },
+  TSPunctSpecial = { fg = "${red}" },
+  TSStrong = { style = "bold" },
+  TSLiteral = { fg = "${green}" },
+  TSPunctDelimiter = { fg = "#848b98" },
+  TSEmphasis = { style = "italic" },
+  TSURI = { style = "underline" },
+  TSTextReference = { "${blue}" },
+  TSStringEscape = { fg = "${red}" },
+}
+onedarkpro.setup({
+--dark_theme = "onedark", -- The default dark theme
+  options = {
+    --cursorline = true, -- Use cursorline highlighting?
+    transparency = true, -- Use a transparent background?
+    --terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
+    --window_unfocussed_color = false, -- When the window is out of focus, change the normal background?
+  },
+  filetype_hlgroups = {
+    markdown = markdown
+  }
+})
+onedarkpro.load()
 -- Lua
 require('onedark').setup  {
     -- Main options --
@@ -42,4 +57,4 @@ require('onedark').setup  {
         background = true,    -- use background color for virtual text
     },
 }
-require('onedark').load()
+
