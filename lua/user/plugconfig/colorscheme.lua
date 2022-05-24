@@ -28,6 +28,7 @@ onedarkpro.setup({
     python = {},
     rust = {},
     tex = {},
+    c = {},
   }
 })
 onedarkpro.load()
