@@ -40,7 +40,7 @@ require('lualine').setup {
   end,
   icon = ' LSP:',
   color = { fg = '#ffffff', gui = 'bold' },},
-  'lsp_progress'
+    'lsp_progress'
   },
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},

@@ -94,6 +94,7 @@ for _, lsp in pairs(servers) do
     handlers=handlers,
   }
 end
+
 require'lspconfig'.sumneko_lua.setup {
   on_attach = on_attach,
   capabilities = capabilities,

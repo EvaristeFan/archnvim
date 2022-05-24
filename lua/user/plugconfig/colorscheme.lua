@@ -1,4 +1,10 @@
 local onedarkpro = require("onedarkpro")
+local hlgroups = {
+  DiagnosticUnderlineError = { style = "underline" },
+  DiagnosticUnderlineWarn = { style = "underline" },
+  DiagnosticUnderlineInfo = { style = "underline" },
+  DiagnosticUnderlineHint = { style = "underline" },
+}
 local markdown = {
   TSTitle = { fg = "${orange}", style = "bold" },
   TSPunctSpecial = { fg = "${red}" },
@@ -10,6 +16,9 @@ local markdown = {
   TSTextReference = { "${blue}" },
   TSStringEscape = { fg = "${red}" },
 }
+local lua = {
+  TSField = { fg = "${cyan}" },
+}
 onedarkpro.setup({
 --dark_theme = "onedark", -- The default dark theme
   options = {
@@ -18,8 +27,10 @@ onedarkpro.setup({
     --terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
     --window_unfocussed_color = false, -- When the window is out of focus, change the normal background?
   },
+  hlgroups = hlgroups,
   filetype_hlgroups = {
-    markdown = markdown
+    markdown = markdown,
+    lua = lua,
   }
 })
 onedarkpro.load()
