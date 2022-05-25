@@ -86,21 +86,13 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'clangd', 'texlab' }
-for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    handlers=handlers,
-  }
-end
-
-require'lspconfig'.sumneko_lua.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  handlers=handlers,
-  settings = {
-    Lua = {
+local servers = { 'pyright', 'clangd', 'texlab', 'sumneko_lua', 'rust_analyzer' }
+local serversopts = {
+    pyright = {},
+    clangd = {},
+    texlab = {},
+    sumneko_lua = {
+	    Lua = {
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT',
@@ -118,5 +110,20 @@ require'lspconfig'.sumneko_lua.setup {
         enable = false,
       },
     },
-  },
+    },
+    rust_analyzer = {
+	    ["rust-analyzer"] = {
+		  cargo = {
+			  features = { "exercises" }
+		  }
+	  }
+  }
 }
+for _, lsp in pairs(servers) do
+  require('lspconfig')[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    handlers=handlers,
+    settings = serversopts[lsp]
+  }
+end
