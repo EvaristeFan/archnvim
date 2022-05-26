@@ -22,6 +22,9 @@ onedarkpro.setup({
     --terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
     --window_unfocussed_color = false, -- When the window is out of focus, change the normal background?
   },
+  hlgroups = {
+    LspSignatureActiveParameter = { bg = "${gray}", fg = "${purple}" },
+  },
   filetype_hlgroups = {
     markdown = markdown,
     lua = lua,
