@@ -24,6 +24,9 @@ onedarkpro.setup({
   },
   hlgroups = {
     LspSignatureActiveParameter = { bg = "${gray}", fg = "${purple}" },
+    TelescopePreviewTitle = { fg = "${purple}", bg = "${NONE}" },
+    TelescopePromptTitle = { fg = "${purple}", bg = "${NONE}" },
+    TelescopeBorder = { fg = "${orange}" },
   },
   filetype_hlgroups = {
     markdown = markdown,
