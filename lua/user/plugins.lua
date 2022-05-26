@@ -8,7 +8,7 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   -- Use onedarkpro colorscheme
-  use 'olimorris/onedarkpro.nvim'
+  use { 'olimorris/onedarkpro.nvim', }
 
   -- onedark
   use 'navarasu/onedark.nvim'
@@ -34,8 +34,6 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use { 'nvim-lua/popup.nvim' }
-
 
   -- extensions of fzf native
   use {

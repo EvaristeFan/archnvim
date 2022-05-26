@@ -52,7 +52,9 @@ vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<C
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
-  require "lsp_signature".on_attach()  -- Note: add in lsp client on-attach
+  require "lsp_signature".on_attach({
+	  hi_parameter = "LspSignatureActiveParameter",
+  })  -- Note: add in lsp client on-attach
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -86,11 +88,12 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'clangd', 'texlab', 'sumneko_lua', 'rust_analyzer' }
+local servers = { 'pyright', 'clangd', 'texlab', 'sumneko_lua', 'rust_analyzer'}
 local serversopts = {
     pyright = {},
     clangd = {},
     texlab = {},
+    rust_analyzer = {},
     sumneko_lua = {
 	    Lua = {
       runtime = {
@@ -111,13 +114,6 @@ local serversopts = {
       },
     },
     },
-    rust_analyzer = {
-	    ["rust-analyzer"] = {
-		  cargo = {
-			  features = { "exercises" }
-		  }
-	  }
-  }
 }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
