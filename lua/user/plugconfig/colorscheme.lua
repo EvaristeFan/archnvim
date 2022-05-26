@@ -27,6 +27,7 @@ onedarkpro.setup({
     TelescopePreviewTitle = { fg = "${purple}", bg = "${NONE}" },
     TelescopePromptTitle = { fg = "${purple}", bg = "${NONE}" },
     TelescopeBorder = { fg = "${orange}" },
+    CmpItemMenu = { fg = "#af8fe9" },
   },
   filetype_hlgroups = {
     markdown = markdown,
