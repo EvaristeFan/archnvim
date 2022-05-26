@@ -52,9 +52,6 @@ vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<C
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
-  require "lsp_signature".on_attach({
-	  hi_parameter = "LspSignatureActiveParameter",
-  })  -- Note: add in lsp client on-attach
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -84,6 +81,9 @@ local on_attach = function(client, bufnr)
       vim.diagnostic.open_float(nil, hoveropts)
     end
   })
+  require "lsp_signature".on_attach({
+	  hi_parameter = "LspSignatureActiveParameter",
+  })  -- Note: add in lsp client on-attach
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
