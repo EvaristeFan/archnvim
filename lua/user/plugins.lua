@@ -34,6 +34,7 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+  use {'nvim-telescope/telescope-ui-select.nvim' }
 
   -- extensions of fzf native
   use {
@@ -67,6 +68,8 @@ return require('packer').startup(function(use)
   use 'onsails/lspkind.nvim'
   use 'arkav/lualine-lsp-progress'
   use 'ray-x/lsp_signature.nvim'
+  use 'RishabhRD/popfix'
+  use 'RishabhRD/nvim-lsputils'
 
   -- Cmp completion
   use "hrsh7th/nvim-cmp"

@@ -3,7 +3,7 @@
 vim.o.updatetime = 250
 vim.cmd [[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_text = true,
   float = {
     source = "always",
   },
@@ -30,6 +30,7 @@ local border = {
 -- LSP settings (for overriding per client)
 local handlers =  {
   ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border}),
+  ['textDocument/references'] = require'lsputil.locations'.references_handler
 }
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
