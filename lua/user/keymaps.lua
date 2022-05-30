@@ -11,7 +11,6 @@ vim.g.neovide_transparency = 0.8
 keymap("n", "S", "<cmd>w<cr>", opts)
 keymap("n", "Q", "<cmd>q<cr>", opts)
 keymap("n", "<leader>rc", "<cmd>e $MYVIMRC<cr>", opts)
-keymap("n", "<leader>w", "<C-w>w", opts)
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
@@ -30,6 +29,7 @@ keymap('o', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hin
 keymap('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
 keymap('', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
 keymap('', 'w', "<cmd>lua require'hop'.hint_words({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
+keymap('', 'e', "<cmd>lua require'hop'.hint_words({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_position = require'hop.hint'.HintPosition.END })<cr>", {})
 keymap('', 'b', "<cmd>lua require'hop'.hint_words({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
 keymap('', 'J', "<cmd>lua require'hop'.hint_lines({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR })<cr>", {})
 

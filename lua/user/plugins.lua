@@ -56,7 +56,6 @@ return require('packer').startup(function(use)
   -- Hop.nvim
   use {
     'phaazon/hop.nvim',
-    branch = 'v1', -- optional but strongly recommended
   }
 
     -- Treesittetr
