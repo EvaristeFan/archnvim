@@ -47,7 +47,7 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
 --  },
     update_focused_file = {
       enable = true,
-      update_cwd = false,
+      update_cwd = true,
       ignore_list = {},
     },
 --  ignore_ft_on_setup = {},
