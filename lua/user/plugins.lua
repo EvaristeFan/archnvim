@@ -63,6 +63,8 @@ return require('packer').startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
+  use { 'p00f/nvim-ts-rainbow' }
+
   use 'neovim/nvim-lspconfig' -- Collection of configurations for the built-in LSP client
   use 'onsails/lspkind.nvim'
   use 'arkav/lualine-lsp-progress'
