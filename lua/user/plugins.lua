@@ -15,6 +15,11 @@ return require('packer').startup(function(use)
 
   use "kyazdani42/nvim-web-devicons" -- icons
 
+  use{
+   "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  }
+
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -89,7 +94,7 @@ return require('packer').startup(function(use)
   use "quangnguyen30192/cmp-nvim-ultisnips"
 
   -- vimtex
-  use { 'lervag/vimtex', opt = true, ft = { "tex", "bib"} }
+  use { 'lervag/vimtex' }
   -- surround vim
   use 'tpope/vim-surround'
   if packer_bootstrap then
