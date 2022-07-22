@@ -2,7 +2,8 @@ local cmp = require'cmp' or {}
 local luasnip = require('luasnip')
 
 luasnip.config.set_config({
-  enable_autosnippets = true
+  enable_autosnippets = true,
+  update_events = "TextChanged,TextchangedI",
 })
 
 local lspkind = require('lspkind')
@@ -37,7 +38,7 @@ cmp.setup({
 	vim_item.menu = ({
 	  buffer = "[Buffer]",
 	  nvim_lsp = "[LSP]",
-	  luasnip = "[Snippet]",
+	  luasnip = "[LuaSnip]",
 	  path = "[Path]"
 	})[entry.source.name]
         return vim_item
