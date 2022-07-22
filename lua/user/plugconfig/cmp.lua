@@ -1,14 +1,26 @@
-local cmp = require'cmp'
+local cmp = require'cmp' or {}
+local luasnip = require('luasnip')
+
+luasnip.config.set_config({
+  enable_autosnippets = true
+})
+
 local lspkind = require('lspkind')
+
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 
 
 cmp.setup({
   snippet = {
     expand = function(args)
       -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
       -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
-      vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
   },
   window = {
@@ -25,25 +37,35 @@ cmp.setup({
 	vim_item.menu = ({
 	  buffer = "[Buffer]",
 	  nvim_lsp = "[LSP]",
-	  ultisnips = "[Snippet]",
+	  luasnip = "[Snippet]",
 	  path = "[Path]"
 	})[entry.source.name]
         return vim_item
       end
     })
   },
-  mapping = cmp.mapping.preset.insert({
+  mapping = {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ["<Tab>"] = cmp.mapping.select_next_item(),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
     ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-  }),
+  },
   sources = {
     { name = 'buffer' },
     { name = 'path' },
     { name = 'nvim_lsp' },
-    { name = 'ultisnips' },
+    { name = 'luasnip' },
   }
 })
 -- Setup lspconfig.

@@ -82,15 +82,21 @@ return require('packer').startup(function(use)
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use 'honza/vim-snippets'
   use {
-    "SirVer/ultisnips",
-     config = function()
-        -- optional call to setup (see customization section)
-        require("cmp_nvim_ultisnips").setup{}
-      end,
+    'L3MON4D3/LuaSnip',
+    config = require("luasnip.loaders.from_lua").load({ paths = "~/mynvimconfig/snippets/" })
   }
-  use "quangnguyen30192/cmp-nvim-ultisnips"
+  use { 'saadparwaiz1/cmp_luasnip' }
+
+  -- use 'honza/vim-snippets'
+  -- use {
+  --   "SirVer/ultisnips",
+  --    config = function()
+  --       -- optional call to setup (see customization section)
+  --       require("cmp_nvim_ultisnips").setup{}
+  --     end,
+  -- }
+  -- use "quangnguyen30192/cmp-nvim-ultisnips"
 
   -- vimtex
   use { 'lervag/vimtex' }
