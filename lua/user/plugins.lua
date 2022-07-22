@@ -60,8 +60,7 @@ return require('packer').startup(function(use)
 
   -- Hop.nvim
   use {
-    'phaazon/hop.nvim',
-  }
+    'phaazon/hop.nvim',   }
 
     -- Treesittetr
   use {

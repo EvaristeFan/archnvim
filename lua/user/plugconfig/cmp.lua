@@ -58,5 +58,6 @@ cmp.setup.cmdline(':', {
 require'cmp'.setup.cmdline('/', {
   sources = {
     { name = 'buffer' }
-  }
+  },
+  mapping = cmp.mapping.preset.cmdline()
 })

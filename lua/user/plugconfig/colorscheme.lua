@@ -26,7 +26,9 @@ onedarkpro.setup({
     LspSignatureActiveParameter = { bg = "${gray}", fg = "${purple}" },
     TelescopePreviewTitle = { fg = "${purple}", bg = "${NONE}" },
     TelescopePromptTitle = { fg = "${purple}", bg = "${NONE}" },
-    TelescopeBorder = { fg = "${orange}" },
+    TelescopePromptBorder = { fg = "${orange}" },
+    TelescopePreviewBorder = { fg = "${green}" },
+    TelescopeResultsBorder = { fg = "${cyan}" },
     CmpItemMenu = { fg = "#af8fe9" },
   },
   filetype_hlgroups = {
