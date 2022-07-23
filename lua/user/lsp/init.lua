@@ -21,7 +21,8 @@ end
 -- LSP settings (for overriding per client)
 local handlers =  {
   ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = 'rounded'}),
-  ['textDocument/references'] = require'lsputil.locations'.references_handler
+  ['textDocument/references'] = require'lsputil.locations'.references_handler,
+  ['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
 }
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
@@ -56,6 +57,7 @@ local on_attach = function(client, bufnr)
   keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', optsbuf)
   keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', optsbuf)
   keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', optsbuf)
+  keymap('n', '<space>sy', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', optsbuf)
   keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', optsbuf)
   keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', optsbuf)
   keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', optsbuf)
