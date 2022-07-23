@@ -84,3 +84,14 @@ function dynamic_node_external_update(func_indx)
 		ls.session.current_nodes[vim.api.nvim_get_current_buf()] = dynamic_node.snip:jump_into(1)
 	end
 end
+
+vim.keymap.set({ "i", "s" }, "<C-l>", function()
+	if ls.choice_active() then
+		ls.change_choice(1)
+	end
+end)
+vim.keymap.set({ "i", "s" }, "<C-h>", function()
+	if ls.choice_active() then
+		ls.change_choice(-1)
+	end
+end)
