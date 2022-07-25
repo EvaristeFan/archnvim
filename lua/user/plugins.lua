@@ -78,7 +78,6 @@ return require('packer').startup(function(use)
   use {
     'neovim/nvim-lspconfig',-- Collection of configurations for the built-in LSP client
     config = function() require("user.lsp") end,
-    wants = { "nvim-cmp", "cmp-nvim-lsp" },
     after = { "nvim-cmp", "cmp-nvim-lsp" },
   }
   use 'onsails/lspkind.nvim'
@@ -115,7 +114,6 @@ return require('packer').startup(function(use)
       { 'saadparwaiz1/cmp_luasnip', after = "nvim-cmp" }
     },
     after  = { "LuaSnip", "nvim-treesitter" } ,
-    wants  = { "LuaSnip" },
     config = function() require("user.plugconfig.cmp") end,
   }
 
