@@ -1,14 +1,23 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+
+-- Disables LSP plugins and other heavy plugins.
+
+-- }}}
+
 if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
+
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
   -- Use onedarkpro colorscheme
-  use { 'olimorris/onedarkpro.nvim', }
+  use {
+    'olimorris/onedarkpro.nvim',
+    config = function() require("user.plugconfig.colorscheme") end
+  }
 
   -- onedark
   use 'navarasu/onedark.nvim'
@@ -66,7 +75,12 @@ return require('packer').startup(function(use)
   }
   use { 'p00f/nvim-ts-rainbow' }
 
-  use 'neovim/nvim-lspconfig' -- Collection of configurations for the built-in LSP client
+  use {
+    'neovim/nvim-lspconfig',-- Collection of configurations for the built-in LSP client
+    config = function() require("user.lsp") end,
+    wants = { "nvim-cmp", "cmp-nvim-lsp" },
+    after = { "nvim-cmp", "cmp-nvim-lsp" },
+  }
   use 'onsails/lspkind.nvim'
   use 'arkav/lualine-lsp-progress'
   use 'ray-x/lsp_signature.nvim'
@@ -85,17 +99,25 @@ return require('packer').startup(function(use)
     end
   }
 
+
   -- Cmp completion
-  use "hrsh7th/nvim-cmp"
-  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
   use {
-    'L3MON4D3/LuaSnip',
-    config = require("luasnip.loaders.from_lua").load({ paths = "~/mynvimconfig/snippets/" })
+    "hrsh7th/nvim-cmp",
+    requires = {
+      { 'hrsh7th/cmp-nvim-lsp', after = "nvim-cmp" },-- LSP source for nvim-cmp
+      { 'hrsh7th/cmp-buffer', after = "nvim-cmp" },-- buffer completions
+      { 'hrsh7th/cmp-path', after = "nvim-cmp" },-- path completions
+      { 'hrsh7th/cmp-cmdline', after = "nvim-cmp" },-- cmdline completions
+      {
+        'L3MON4D3/LuaSnip',
+        config = function() require("user.plugconfig.luasnip") end,
+      },
+      { 'saadparwaiz1/cmp_luasnip', after = "nvim-cmp" }
+    },
+    after  = { "LuaSnip", "nvim-treesitter" } ,
+    wants  = { "LuaSnip" },
+    config = function() require("user.plugconfig.cmp") end,
   }
-  use { 'saadparwaiz1/cmp_luasnip' }
 
   -- use 'honza/vim-snippets'
   -- use {

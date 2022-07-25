@@ -1,4 +1,5 @@
 local onedarkpro = require("onedarkpro")
+
 local markdown = {
 	TSTitle = { fg = "${orange}", style = "bold" },
 	TSPunctSpecial = { fg = "${red}" },
@@ -10,9 +11,11 @@ local markdown = {
 	TSTextReference = { "${blue}" },
 	TSStringEscape = { fg = "${red}" },
 }
+
 local lua = {
 	TSField = { fg = "${cyan}" },
 }
+
 onedarkpro.setup({
 	--dark_theme = "onedark", -- The default dark theme
 	options = {
@@ -23,6 +26,8 @@ onedarkpro.setup({
 		--window_unfocussed_color = false, -- When the window is out of focus, change the normal background?
 	},
 	hlgroups = {
+		Folded = { fg = "${orange}" },
+		CursorLine = { bg = "NONE", style = "underline" },
 		LuasnipTextNodeActive = { bg = "${gray}", fg = "${yellow}" },
 		LspSignatureActiveParameter = { bg = "${gray}", fg = "${purple}" },
 		TelescopePreviewTitle = { fg = "${purple}", bg = "${NONE}" },
@@ -41,4 +46,5 @@ onedarkpro.setup({
 		c = {},
 	}
 })
-onedarkpro.load()
+
+vim.cmd("colorscheme onedarkpro")

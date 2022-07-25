@@ -90,6 +90,7 @@ cmp.setup({
 		{ name = 'luasnip' },
 	}
 })
+
 -- Setup lspconfig.
 cmp.setup.cmdline(':', {
 	mapping = cmp.mapping.preset.cmdline({
