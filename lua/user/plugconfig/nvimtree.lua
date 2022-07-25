@@ -6,4 +6,9 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
 			quit_on_open = true,
 		},
 	}, --}}}
+	update_focused_file = {
+		enable = true,
+		update_root = true,
+		ignore_list = {},
+	},
 } -- END_DEFAULT_OPTS
