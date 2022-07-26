@@ -1,18 +1,19 @@
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.indentexpr = "nvim_treesitter#indent()"
+vim.opt.fdl = 1
 
-require 'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup({
 	fold = {
 		enable = true,
 	},
-	highlight = {
+	highlight = { --{{{
 		enable = true,
 		disable = { "latex" },
-	},
+	}, --}}}
 	indent = {
 		enable = false,
 	},
+
 	rainbow = {
 		enable = true,
 		-- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
@@ -21,5 +22,6 @@ require 'nvim-treesitter.configs'.setup {
 		-- colors = {}, -- table of hex strings
 		-- termcolors = {} -- table of colour name strings
 	}
-}
+})
 
+-- vim: fdm=marker fdl=0

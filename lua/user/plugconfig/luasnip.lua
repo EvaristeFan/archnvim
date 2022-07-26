@@ -86,6 +86,7 @@ function dynamic_node_external_update(func_indx)
 	end
 end
 
+-- Keymap for choiceNode {{{
 vim.keymap.set({ "i", "s" }, "<C-l>", function()
 	if ls.choice_active() then
 		ls.change_choice(1)
@@ -96,4 +97,6 @@ vim.keymap.set({ "i", "s" }, "<C-h>", function()
 		ls.change_choice(-1)
 	end
 end)
+-- }}}
 
+-- vim: fdm=marker fdl=0
