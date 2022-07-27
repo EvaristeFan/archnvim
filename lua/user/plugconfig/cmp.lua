@@ -1,23 +1,5 @@
 local cmp = require 'cmp' or {}
 local luasnip = require('luasnip')
-local types = require("luasnip.util.types")
-luasnip.config.set_config({
-	enable_autosnippets = true,
-	update_events = "TextChanged,TextchangedI",
-	ext_opts = {
-		[types.choiceNode] = {
-			active = {
-				virt_text = { { "● choiceNode", "LuasnipTextNodeActive" } },
-			},
-		},
-		-- [types.insertNode] = {
-		-- 	active = {
-		-- 		virt_text = { { "●", "GruvboxBlue" } },
-		-- 	},
-		-- },
-	},
-})
-
 local lspkind = require('lspkind')
 
 local has_words_before = function()

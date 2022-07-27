@@ -28,7 +28,8 @@ onedarkpro.setup({
 	hlgroups = {
 		Folded = { fg = "${orange}" },
 		CursorLine = { bg = "NONE", style = "underline" },
-		LuasnipTextNodeActive = { bg = "${gray}", fg = "${yellow}" },
+		LuasnipChoiceNodeActive = { bg = "${gray}", fg = "${yellow}" },
+		LuasnipInsertNodeActive = { bg = "${gray}", fg = "${purple}" },
 		LspSignatureActiveParameter = { bg = "${gray}", fg = "${purple}" },
 		TelescopePreviewTitle = { fg = "${purple}", bg = "${NONE}" },
 		TelescopePromptTitle = { fg = "${purple}", bg = "${NONE}" },
