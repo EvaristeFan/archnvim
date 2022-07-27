@@ -13,24 +13,10 @@ require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	-- }}}
 
-	-- onedarkpro {{{
-	use({
-		'olimorris/onedarkpro.nvim',
-		config = function() require("user.plugconfig.colorscheme") end
-	})
-	-- }}}
-
-
-	-- Unrefactored plugin {{{
 	use "mhinz/vim-startify"
-
+	-- Editor {{{
 	-- Hop.nvim
-	use {
-		'phaazon/hop.nvim',
-	}
-	-- vimtex
-	use { 'lervag/vimtex' }
-
+	use { 'phaazon/hop.nvim' }
 	--  nvim-surround
 	use({
 		"kylechui/nvim-surround",
@@ -40,15 +26,14 @@ require('packer').startup(function(use)
 				-- Configuration here, or leave empty to use defaults
 			})
 		end
+	}) --}}}
+
+	-- Appearance {{{
+	use({
+		'olimorris/onedarkpro.nvim',
+		config = function() require("user.plugconfig.colorscheme") end
 	})
-
 	use "kyazdani42/nvim-web-devicons" -- icons
-
-	use {
-		"iamcco/markdown-preview.nvim",
-		run = function() vim.fn["mkdp#util#install"]() end,
-	}
-
 	use {
 		'nvim-lualine/lualine.nvim',
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -87,8 +72,17 @@ require('packer').startup(function(use)
 	use {
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
+		requires = {
+			{
+				"nvim-treesitter/nvim-treesitter-textobjects",
+				after = "nvim-treesitter",
+				-- This is actually the nvim-treesitter config, but it's
+				-- here to make lazy loading happy.
+				config = function() require("user.plugconfig.treesitter") end,
+			},
+			{ 'p00f/nvim-ts-rainbow', after = "nvim-treesitter" }
+		}
 	}
-	use { 'p00f/nvim-ts-rainbow' }
 	-- }}}
 
 	-- Lsp Config {{{
@@ -135,6 +129,16 @@ require('packer').startup(function(use)
 		config   = function() require("user.plugconfig.cmp") end,
 	}
 	-- }}}
+
+	-- Filetype Plugins -- {{{
+	-- vimtex
+	use { 'lervag/vimtex' }
+	use {
+		"iamcco/markdown-preview.nvim",
+		run = function() vim.fn["mkdp#util#install"]() end,
+	}
+
+	--}}}
 
 
 	if packer_bootstrap then
