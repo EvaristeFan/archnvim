@@ -22,7 +22,7 @@ require('packer').startup(function(use)
 
 
 	-- Unrefactored plugin {{{
-	use 'mhinz/vim-startify'
+	use "mhinz/vim-startify"
 
 	-- Hop.nvim
 	use {
@@ -30,8 +30,18 @@ require('packer').startup(function(use)
 	}
 	-- vimtex
 	use { 'lervag/vimtex' }
-	-- surround vim
-	use 'tpope/vim-surround'
+
+	--  nvim-surround
+	use({
+		"kylechui/nvim-surround",
+		config = function()
+			require("nvim-surround").setup({
+				move_cursor = false,
+				-- Configuration here, or leave empty to use defaults
+			})
+		end
+	})
+
 	use "kyazdani42/nvim-web-devicons" -- icons
 
 	use {
