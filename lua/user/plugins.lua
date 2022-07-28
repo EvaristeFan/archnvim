@@ -56,11 +56,19 @@ require('packer').startup(function(use)
 		config = function() require("user.plugconfig.lualine") end
 	}
 	-- File tree
-	use 'kyazdani42/nvim-tree.lua'
-
+	use { 'kyazdani42/nvim-tree.lua',
+		config = function()
+			require("user.plugconfig.nvimtree")
+		end,
+	}
 	-- bufferline plugin
-	-- -- using packer.nvim
-	use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' }
+	use { 'akinsho/bufferline.nvim',
+		tag = "v2.*",
+		requires = 'kyazdani42/nvim-web-devicons',
+		config = function()
+			require("user.plugconfig.bufferline")
+		end,
+	}
 	-- }}}
 
 
@@ -158,7 +166,6 @@ require('packer').startup(function(use)
 		"iamcco/markdown-preview.nvim",
 		run = function() vim.fn["mkdp#util#install"]() end,
 	}
-
 	--}}}
 
 
