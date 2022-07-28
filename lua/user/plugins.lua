@@ -29,7 +29,10 @@ require('packer').startup(function(use)
 	}
 	-- Editor {{{
 	-- Hop.nvim
-	use { 'phaazon/hop.nvim' }
+	use { 'phaazon/hop.nvim',
+		config = function()
+			require("user.plugconfig.hop")
+		end }
 	--  nvim-surround
 	use({
 		"kylechui/nvim-surround",
@@ -49,7 +52,8 @@ require('packer').startup(function(use)
 	use "kyazdani42/nvim-web-devicons" -- icons
 	use {
 		'nvim-lualine/lualine.nvim',
-		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+		requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+		config = function() require("user.plugconfig.lualine") end
 	}
 	-- File tree
 	use 'kyazdani42/nvim-tree.lua'
