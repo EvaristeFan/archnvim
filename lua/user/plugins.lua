@@ -7,13 +7,26 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 -- }}}
 
-
 require('packer').startup(function(use)
 	-- Packer can manage itself {{{
 	use 'wbthomason/packer.nvim'
 	-- }}}
 
 	use "mhinz/vim-startify"
+	use {
+		"AckslD/nvim-neoclip.lua",
+		requires = {
+			{ 'kkharji/sqlite.lua' },
+			-- you'll need at least one of these
+			{ 'nvim-telescope/telescope.nvim' },
+			-- {'ibhagwan/fzf-lua'},
+		},
+		config = function()
+			require('neoclip').setup({
+				enable_persistent_history = true,
+			})
+		end,
+	}
 	-- Editor {{{
 	-- Hop.nvim
 	use { 'phaazon/hop.nvim' }
@@ -50,7 +63,11 @@ require('packer').startup(function(use)
 	-- Telscope and extensions {{{
 	use {
 		'nvim-telescope/telescope.nvim',
-		requires = { { 'nvim-lua/plenary.nvim' } }
+		requires = { 'nvim-lua/plenary.nvim' },
+		config = function()
+			require("user.plugconfig.telescope")
+		end,
+		after = "nvim-neoclip.lua",
 	}
 	use { 'nvim-telescope/telescope-ui-select.nvim' }
 

@@ -23,8 +23,8 @@ require('nvim-treesitter.configs').setup({
 		},
 	}, --}}}
 
-	textobjects = { --{{{
-		select = {
+	textobjects = {
+		select = { --{{{
 			enable = true,
 			keymaps = {
 				["af"] = "@function.outer",
@@ -37,8 +37,8 @@ require('nvim-treesitter.configs').setup({
 				["ia"] = "@parameter.inner",
 				["as"] = "@statement.outer",
 			},
-		},
-		move = {
+		}, --}}}
+		move = { --{{{
 			enable = true,
 			set_jumps = true,
 			goto_next_start = {
@@ -61,9 +61,8 @@ require('nvim-treesitter.configs').setup({
 				["[F"] = "@function.outer",
 				["[B"] = "@block.outer",
 			},
-		},
-
-		swap = {
+		}, --}}}
+		swap = { --{{{
 			enable = true,
 			swap_next = {
 				["<leader>.f"] = "@function.outer",
@@ -93,4 +92,4 @@ require('nvim-treesitter.configs').setup({
 	}
 })
 
--- vim: fdm=marker fdl=1
+-- vim: fdm=marker fdl=0

@@ -1,5 +1,5 @@
-require('user.plugconfig.telescope')
---require('user.plugconfig.colorscheme')
+-- require('user.plugconfig.telescope')
+-- require('user.plugconfig.colorscheme')
 require('user.plugconfig.lualine')
 require('user.plugconfig.bufferline')
 require('user.plugconfig.nvimtree')
