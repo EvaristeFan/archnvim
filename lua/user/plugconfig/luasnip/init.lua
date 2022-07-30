@@ -1,21 +1,25 @@
 local ls = require("luasnip")
 local types = require("luasnip.util.types")
+
 ls.config.set_config({
 	enable_autosnippets = true,
 	update_events = "TextChanged,TextchangedI",
 	ext_opts = {
 		[types.choiceNode] = {
 			active = {
-				virt_text = { { "● choiceNode", "LuasnipChoiceNodeActive" } },
+				virt_text = { { " ChoiceNode", "TSAAAReference" } },
 			},
 		},
-		-- [types.insertNode] = {
-		-- 	active = {
-		-- 		virt_text = { { "●", "" } },
-		-- 	},
-		-- },
+		[types.insertNode] = {
+			active = {
+				virt_text = { { " InsertNode", "TSAAAEmphasis" } },
+			},
+		},
 	},
 })
+
+
+require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/lua/user/plugconfig/luasnip/snippets/" })
 
 -- Keymap for choiceNode {{{
 vim.keymap.set({ "i", "s" }, "<C-l>", function()
@@ -31,11 +35,11 @@ end)
 -- }}}
 
 -- Keymap for dynamic_node {{{
-vim.api.nvim_set_keymap('i', "<C-t>", '<cmd>lua require("user.plugconfig.luasnip.util").dynamic_node_external_update(1)<Cr>', { noremap = true })
-vim.api.nvim_set_keymap('s', "<C-t>", '<cmd>lua require("user.plugconfig.luasnip.util").dynamic_node_external_update(1)<Cr>', { noremap = true })
+vim.keymap.set({ 'i', 's' }, "<C-t>",
+	'<cmd>lua require("user.plugconfig.luasnip.utils").dynamic_node_external_update(1)<Cr>', { noremap = true })
 
-vim.api.nvim_set_keymap('i', "<C-g>", '<cmd>lua require("user.plugconfig.luasnip.util").dynamic_node_external_update(2)<Cr>', { noremap = true })
-vim.api.nvim_set_keymap('s', "<C-g>", '<cmd>lua require("user.plugconfig.luasnip.util").dynamic_node_external_update(2)<Cr>', { noremap = true })
+vim.keymap.set({ 'i', 's' }, "<C-g>",
+	'<cmd>lua require("user.plugconfig.luasnip.utils").dynamic_node_external_update(2)<Cr>', { noremap = true })
 ---}}}
 
 -- vim: fdm=marker fdl=0
