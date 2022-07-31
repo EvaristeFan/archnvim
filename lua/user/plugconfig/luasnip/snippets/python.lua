@@ -17,7 +17,7 @@ local r = ls.restore_node
 
 local snippets, autosnippets = {}, {}
 
-local function generic_pdoc(ilevel, args)
+local function generic_pfdoc(ilevel, args)
 	local nodes = { t({ "'''", string.rep('\t', ilevel) }) }
 	nodes[#nodes + 1] = i(1, 'Small Description.')
 	nodes[#nodes + 1] = t({ '', '', string.rep('\t', ilevel) })
@@ -44,19 +44,46 @@ local function generic_pdoc(ilevel, args)
 
 	return nodes, #a
 end
+local function generic_pcdoc(ilevel, args)
+	local nodes = { t({ '"""', string.rep('\t', ilevel) }) }
+	nodes[#nodes + 1] = i(1, 'Small Description.')
+	nodes[#nodes + 1] = t({ '', '', string.rep('\t', ilevel) })
+	nodes[#nodes + 1] = i(2, 'Long Description')
+	nodes[#nodes + 1] = t({ '', '', string.rep('\t', ilevel) .. 'Attributes:' })
+
+	local a = vim.tbl_map(function(item)
+		local trimed = vim.trim(item)
+		return trimed
+	end, vim.split(
+		args[1][1],
+		',',
+		true
+	))
+
+	if args[1][1] == '' then
+		a = {}
+	end
+
+	for idx, v in pairs(a) do
+		nodes[#nodes + 1] = t({ '', string.rep('\t', ilevel + 1) .. v .. ': ' })
+		nodes[#nodes + 1] = i(idx + 2, 'Description For ' .. v)
+	end
+
+	return nodes, #a
+end
 
 local function pyfdoc(args, _)
-	local nodes, a = generic_pdoc(1, args)
+	local nodes, a = generic_pfdoc(1, args)
 	nodes[#nodes + 1] = c(a + 2 + 1, { t(''), sn(nil, {t{ '', '', '\tReturns: ' }, r(1, "nodeforreturn",i(1))})})
 	nodes[#nodes + 1] = c(a + 2 + 2, { t(''), sn(nil, {t{ '', '', '\tRaises: ' }, r(1, "nodeforraise",i(1))})})
-	nodes[#nodes + 1] = t({ '', "\t'''", '\t' })
+	nodes[#nodes + 1] = t({ '', '\t"""', '\t' })
 	local snip = sn(nil, nodes)
 	return snip
 end
 
 local function pycdoc(args, _)
-	local nodes, _ = generic_pdoc(2, args)
-	nodes[#nodes + 1] = t({ '', "\t\t'''", '' })
+	local nodes, _ = generic_pcdoc(2, args)
+	nodes[#nodes + 1] = t({ '', '\t"""', '' })
 	local snip = sn(nil, nodes)
 	return snip
 end
@@ -67,10 +94,13 @@ local clsdoc_snippet = s({ trig = 'cls', dscr = 'Documented Class Structure' }, 
 	t('('),
 	i(2, { '' }),
 	t({ '):', '\t' }),
-	t({ 'def init(self,' }),
-	i(3),
-	t({ '):', '\t\t' }),
 	d(4, pycdoc, { 3 }, { user_args = {2} }),
+	t({ '\tdef init(self,' }),
+	i(3),
+	t({ '):', '' }),
+	t('\t\t"""'),
+	i(5, "Init function Description"),
+	t({'"""',''}),
 	f(function(args)
 		if not args[1][1] or args[1][1] == '' then
 			return { '' }
