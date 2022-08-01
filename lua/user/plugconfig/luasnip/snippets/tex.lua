@@ -13,13 +13,11 @@ local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 local util = require("luasnip.util.util")
 local node_util = require("luasnip.nodes.util")
+local postfix = require("luasnip.extras.postfix").postfix
 
 
 local snippets, autosnippets = {}, {} --}}}
 
-local function is_math()
-	return vim.fn["vimtex#syntax#in_mathzone"]() == 1
-end
 
 local function column_count_from_string(descr)
 	-- this won't work for all cases, but it's simple to improve
@@ -54,6 +52,7 @@ local tab = function(args, snip)
 	return sn(nil, nodes)
 end
 
+-- Item environment snippet {{{
 local rec_ls
 rec_ls = function()
 	return sn(nil, {
@@ -68,12 +67,13 @@ end
 
 
 local ls_snippet = s("ls", {
-	t({ "\\begin{itemize}",
-		"\t\\item " }), i(1), d(2, rec_ls, {}),
+	t("\\begin{"), c(1, { t("itemize"), t("enumrate"), t("description") }), t({ "}",
+		"\t\\item " }), i(2), d(3, rec_ls, {}),
 	t({ "", "\\end{itemize}" }), i(0)
 })
+--}}}
 
-
+-- condition for latex context {{{
 local function is_comment()
 	return vim.fn["vimtex#syntax#in_comment"]() == 1
 end
@@ -84,23 +84,72 @@ local function in_env(name)
 	end
 end
 
-local beg_snippet = s(
+local function is_math()
+	return vim.fn["vimtex#syntax#in_mathzone"]() == 1
+end
+
+-- }}}
+
+local pac_snippet = s(-- {{{
+	"pac",
+	fmt([[
+	\usepackage{}{{{}}}
+	]], { c(1, { t(""), fmt("[{}]", i(1)) }), i(2, "packagename") })) --}}}
+
+local beg_snippet = s(-- {{{
 	"beg",
 	fmt([[
 \begin{{{}}}
 	{}
 \end{{{}}}]], { i(1, "env"), i(2), rep(1) }
 	)
-)
+) --}}}
 
+-- Imply and implyed by {{{
+local imply_snippet = s("=>", t("\\implies"))
+local impliedby_snippet = s("=<", t("\\impliedby"))
+table.insert(autosnippets, impliedby_snippet)
+table.insert(autosnippets, imply_snippet)
+--}}}
 
+-- Math environment snippets {{{
 
+-- Auto spand snippets{{{
+local symfrac_snippet = postfix(
+	{ trig = "./", match_pattern = "[%w%.%^%_%-%(%)\\%{%}]+$" },
+	d(1, function(_, parent)
+		return sn(nil, { t("\\frac{" .. parent.snippet.env.POSTFIX_MATCH .. "}{"), i(1), t "}" })
+	end
+	),
+	{ condition = is_math })
+local iff_snippet = s("iff", t("\\iff"), { condition = is_math })
+local frac_snippet = s("//", fmt("\\frac{{{}}}{{{}}}", { i(1, "molecule"), i(2, "denominator") }),
+	{ condition = is_math })
 local sq_snippet = s(
-	"sr",
+	{ trig = "sr", wordTrig = false },
 	t("^2"),
 	{ condition = is_math }
 )
+local td_snippet = s(
+	{ trig = "td", wordTrig = false },
+	fmt("^{{{}}}", i(1)),
+	{ condition = is_math }
+)
+table.insert(autosnippets, iff_snippet)
+table.insert(autosnippets, frac_snippet)
+table.insert(autosnippets, symfrac_snippet)
+table.insert(autosnippets, sq_snippet)
+table.insert(autosnippets, td_snippet)
+--}}}
 
+-- Normal spand snippets{{{
+
+--}}}
+
+-- }}}
+
+
+-- Table snippet {{{
 local table_snippet = s({ trig = "tab", name = "tabular", dscr = "Add a table env dynamically" }, fmt([[
 \begin{{tabular}}{{{}}}
 {}
@@ -116,11 +165,13 @@ local table_snippet = s({ trig = "tab", name = "tabular", dscr = "Add a table en
 		function(snip) snip.rows = math.max(snip.rows - 1, 1) end
 	}
 }) }))
+--}}}
 
 table.insert(snippets, beg_snippet)
 table.insert(snippets, ls_snippet)
 table.insert(snippets, table_snippet)
-table.insert(autosnippets, sq_snippet)
+table.insert(snippets, pac_snippet)
 
 return snippets, autosnippets
 
+-- vim: fdm=marker fdl=0

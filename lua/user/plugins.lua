@@ -164,6 +164,7 @@ require('packer').startup(function(use)
 	use { 'lervag/vimtex' }
 	use {
 		"iamcco/markdown-preview.nvim",
+		config = function() require("user.plugconfig.vimtex") end,
 		run = function() vim.fn["mkdp#util#install"]() end,
 	}
 	--}}}

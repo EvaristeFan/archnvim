@@ -31,8 +31,6 @@ require('nvim-treesitter.configs').setup({
 				["if"] = "@function.inner",
 				["am"] = "@call.outer",
 				["im"] = "@call.inner",
-				["ab"] = "@block.outer",
-				["ib"] = "@block.inner",
 				["aa"] = "@parameter.outer",
 				["ia"] = "@parameter.inner",
 				["as"] = "@statement.outer",

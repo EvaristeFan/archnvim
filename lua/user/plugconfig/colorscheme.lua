@@ -29,7 +29,7 @@ onedarkpro.setup({
 		Folded = { fg = "${orange}" },
 		CursorLine = { bg = "NONE", style = "underline" },
 		TSAAAEmphasis = { fg = "${purple}" },
-		TSAAAReference = { fg = "${yellow}" },
+		TSAAAReference = { bg = "${gray}", fg = "${yellow}" },
 		LspSignatureActiveParameter = { bg = "${gray}", fg = "${purple}" },
 		TelescopePreviewTitle = { fg = "${purple}", bg = "${NONE}" },
 		TelescopePromptTitle = { fg = "${purple}", bg = "${NONE}" },
