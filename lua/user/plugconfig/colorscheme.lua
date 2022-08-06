@@ -26,6 +26,7 @@ onedarkpro.setup({
 		--window_unfocussed_color = false, -- When the window is out of focus, change the normal background?
 	},
 	hlgroups = {
+		MatchParen = { bg = "${gray}" },
 		Folded = { fg = "${orange}" },
 		CursorLine = { bg = "NONE", style = "underline" },
 		TSAAAEmphasis = { fg = "${purple}" },
