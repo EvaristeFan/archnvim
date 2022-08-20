@@ -1,11 +1,5 @@
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.fdl = 1
 
 require('nvim-treesitter.configs').setup({
-	fold = {
-		enable = true,
-	},
 	highlight = { --{{{
 		enable = true,
 		disable = { "latex" },

@@ -41,14 +41,14 @@ require('packer').startup(function(use)
 			require("nvim-surround").setup({
 				surrounds = {
 					["e"] = {
-						add = function ()
+						add = function()
 							local env_name = surround_config1.get_input("Enter the enviroment name: ")
 							if env_name then
-								return { { "\\begin{"..env_name.."}" }, { "\\end{"..env_name.."}" } }
+								return { { "\\begin{" .. env_name .. "}" }, { "\\end{" .. env_name .. "}" } }
 							end
 						end
+					},
 				},
-			},
 				move_cursor = false,
 				-- Configuration here, or leave empty to use defaults
 			})
@@ -168,7 +168,19 @@ require('packer').startup(function(use)
 		after    = { "LuaSnip", "nvim-treesitter" },
 		config   = function() require("user.plugconfig.cmp") end,
 	}
+	use {
+		"iurimateus/luasnip-latex-snippets.nvim",
+		-- replace "lervag/vimtex" with "nvim-treesitter/nvim-treesitter" if you're
+		-- using treesitter.
+		requires = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
+		config = function()
+			require 'luasnip-latex-snippets'.setup()
+			-- or setup({ use_treesitter = true })
+		end,
+		ft = "tex",
+	}
 	-- }}}
+
 
 	-- Filetype Plugins -- {{{
 	-- vimtex
