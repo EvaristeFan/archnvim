@@ -123,8 +123,8 @@ local symfrac_snippet = postfix(
 	),
 	{ condition = is_math })
 local iff_snippet = s("iff", t("\\iff"), { condition = is_math })
-local frac_snippet = s("//", fmt("\\frac{{{}}}{{{}}}", { i(1, "molecule"), i(2, "denominator") }),
-	{ condition = is_math })
+-- local frac_snippet = s("//", fmt("\\frac{{{}}}{{{}}}", { i(1, "molecule"), i(2, "denominator") }),
+-- 	{ condition = is_math })
 local sq_snippet = s(
 	{ trig = "sr", wordTrig = false },
 	t("^2"),
@@ -136,7 +136,7 @@ local td_snippet = s(
 	{ condition = is_math }
 )
 table.insert(autosnippets, iff_snippet)
-table.insert(autosnippets, frac_snippet)
+-- table.insert(autosnippets, frac_snippet)
 table.insert(autosnippets, symfrac_snippet)
 table.insert(autosnippets, sq_snippet)
 table.insert(autosnippets, td_snippet)

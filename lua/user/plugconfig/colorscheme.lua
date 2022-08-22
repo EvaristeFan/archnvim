@@ -25,7 +25,7 @@ onedarkpro.setup({
 		--terminal_colors = true, -- Use the theme's colors for Neovim's :terminal?
 		--window_unfocussed_color = false, -- When the window is out of focus, change the normal background?
 	},
-	hlgroups = {
+	highlights = {
 		MatchParen = { bg = "${gray}" },
 		Folded = { fg = "${orange}" },
 		CursorLine = { bg = "NONE", style = "underline" },
@@ -39,7 +39,7 @@ onedarkpro.setup({
 		TelescopeResultsBorder = { fg = "${cyan}" },
 		CmpItemMenu = { fg = "#af8fe9" },
 	},
-	filetype_hlgroups = {
+	ft_highlights = {
 		markdown = markdown,
 		lua = lua,
 		python = {},
