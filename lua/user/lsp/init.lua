@@ -10,14 +10,9 @@ vim.diagnostic.config({
   },
 })
 vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=None guibg=None]]
-local win = require('lspconfig.ui.windows')
-local _default_opts = win.default_opts
+-- lspinfo border 
+require('lspconfig.ui.windows').default_options.border = 'rounded'
 
-win.default_opts = function(options)
-  local opts = _default_opts(options)
-  opts.border = 'rounded'
-  return opts
-end
 -- LSP settings (for overriding per client)
 local handlers =  {
   ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = 'rounded'}),
