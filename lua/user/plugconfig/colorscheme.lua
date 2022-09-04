@@ -27,7 +27,6 @@ onedarkpro.setup({
 	},
 	highlights = {
 		MatchParen = { bg = "${gray}" },
-		Folded = { fg = "${orange}" },
 		CursorLine = { bg = "NONE", style = "underline" },
 		TSAAAEmphasis = { fg = "${purple}" },
 		TSAAAReference = { bg = "${gray}", fg = "${yellow}" },
