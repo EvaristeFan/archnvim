@@ -159,6 +159,7 @@ require('packer').startup(function(use)
 			{ 'hrsh7th/cmp-buffer', after = "nvim-cmp" }, -- buffer completions
 			{ 'hrsh7th/cmp-path', after = "nvim-cmp" }, -- path completions
 			{ 'hrsh7th/cmp-cmdline', after = "nvim-cmp" }, -- cmdline completions
+			{ 'dmitmel/cmp-cmdline-history', after = "nvim-cmp" }, -- cmdline completions history
 			{
 				'L3MON4D3/LuaSnip',
 				config = function() require("user.plugconfig.luasnip") end,

@@ -77,13 +77,13 @@ cmp.setup.cmdline(':', {
 		['<CR>'] = cmp.mapping.confirm({ select = true }),
 	}),
 	sources = {
-		{ name = 'cmdline' }
+		{ name = 'cmdline', priority_weight = 1000000 },
+		{ name = 'cmdline_history', priority_weight = 0 },
 	}
 })
-require 'cmp'.setup.cmdline('/', {
+cmp.setup.cmdline('/', {
 	sources = {
 		{ name = 'buffer' }
 	},
 	mapping = cmp.mapping.preset.cmdline()
 })
-
