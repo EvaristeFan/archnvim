@@ -38,7 +38,6 @@ keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
----@diagnostic disable-next-line: unused-local
 local on_attach = function(client, bufnr)
   local optsbuf = { noremap=true, silent=true, buffer = bufnr}
   -- Mappings.
