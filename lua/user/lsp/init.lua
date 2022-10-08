@@ -1,5 +1,6 @@
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
+local navic = require("nvim-navic")
 local keymap = vim.keymap.set
 vim.o.updatetime = 250
 vim.cmd [[autocmd! CursorHold * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
@@ -54,7 +55,7 @@ local on_attach = function(client, bufnr)
   keymap('n', '<space>sy', vim.lsp.buf.document_symbol, optsbuf)
   keymap('n', '<space>ca', vim.lsp.buf.code_action, optsbuf)
   keymap('n', 'gr', vim.lsp.buf.references, optsbuf)
-  keymap('n', '<space>f', function() vim.lsp.buf.formatting() end, optsbuf)
+  keymap('n', '<space>f', function() vim.lsp.buf.format { async = true } end, optsbuf)
   vim.api.nvim_create_autocmd("CursorHold", {
     buffer = bufnr,
     callback = function()
@@ -69,6 +70,9 @@ local on_attach = function(client, bufnr)
       vim.diagnostic.open_float(nil, hoveropts)
     end
   })
+  if client.server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+  end
   require "lsp_signature".on_attach({
 	  hi_parameter = "LspSignatureActiveParameter",
   })  -- Note: add in lsp client on-attach

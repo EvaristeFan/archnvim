@@ -120,7 +120,8 @@ require('packer').startup(function(use)
 				-- here to make lazy loading happy.
 				config = function() require("user.plugconfig.treesitter") end,
 			},
-			{ 'p00f/nvim-ts-rainbow', after = "nvim-treesitter" }
+			{ 'p00f/nvim-ts-rainbow', after = "nvim-treesitter" },
+			{ 'nvim-treesitter/playground', after = "nvim-treesitter" }
 		}
 	}
 	-- }}}
@@ -136,6 +137,24 @@ require('packer').startup(function(use)
 	use 'ray-x/lsp_signature.nvim'
 	use 'RishabhRD/popfix'
 	use 'RishabhRD/nvim-lsputils'
+	use {
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig"
+	}
+	use {
+		'B4mbus/nvim-headband',
+		config = function()
+			require('nvim-headband').setup {
+				-- Your configuration goes here
+			}
+		end,
+		after = 'nvim-web-devicons',
+		requires = {
+			{ 'SmiteshP/nvim-navic' }, -- required for for the navic section to work
+			{ 'kyazdani42/nvim-web-devicons' } -- required for for devicons and default location_section.separator highlight group
+		}
+	}
+
 	-- Lua
 	use {
 		"folke/trouble.nvim",
