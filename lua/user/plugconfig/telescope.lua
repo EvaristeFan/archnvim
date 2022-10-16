@@ -1,4 +1,3 @@
-local actions = require("telescope.actions")
 local keymap = vim.keymap.set
 local trouble = require("trouble.providers.telescope")
 require('telescope').setup{
@@ -28,9 +27,9 @@ require("telescope").load_extension("ui-select")
 require("telescope").load_extension("neoclip")
 
 -- Telescope keymaps {{{
-keymap('n', '<leader>o', "<Cmd>lua require('telescope').extensions.frecency.frecency()<CR>", {noremap = true, silent = true})
-keymap('n', '<leader>f', '<cmd>lua require"telescope.builtin".find_files()<cr>', {})
-keymap('n', '<leader>b', '<cmd>lua require"telescope.builtin".buffers()<cr>', {})
+keymap('n', '<leader>o', require('telescope').extensions.frecency.frecency, {noremap = true, silent = true})
+keymap('n', '<leader>f', require"telescope.builtin".find_files, {})
+keymap('n', '<leader>b', require"telescope.builtin".buffers, {})
 -- }}}
 
 -- vim: fdm=marker fdl=0

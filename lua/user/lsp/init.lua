@@ -29,8 +29,7 @@ end
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
 -- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
