@@ -10,7 +10,7 @@ onedarkpro.setup({
 	},
 	highlights = {
 		-- Filetypes highlights
-		["@field.lua"] = { fg = "${cyan}" },
+		-- ["@field.lua"] = { fg = "${cyan}" },
 		MatchParen = { bg = "${gray}" },
 		CursorLine = { style = "underline" },
 		CursorLineNr = { fg = "${purple}", style = "underline" },

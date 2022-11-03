@@ -1,5 +1,6 @@
 local homepath = vim.fn.expand"~"
 local options = {
+	termguicolors = true,
 	showmode = false,
 	mouse = "nvi",
 	cursorline = true,

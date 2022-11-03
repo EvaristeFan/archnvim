@@ -12,7 +12,11 @@ require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	-- }}}
 
+	-- UI Modify {{{
 	use "mhinz/vim-startify"
+	-- Packer
+	
+	-- }}}
 	use {
 		"AckslD/nvim-neoclip.lua",
 		requires = {

@@ -12,7 +12,11 @@ nvim_tree.setup { -- BEGIN_DEFAULT_OPTS
 		update_root = true,
 		ignore_list = {},
 	},
+	view = {
+		float = {
+			enable = true,
+		},
+	}
 } -- }}}
 
 -- vim: fdm=marker fdl=0
-
