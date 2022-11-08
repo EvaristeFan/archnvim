@@ -124,7 +124,7 @@ require('packer').startup(function(use)
 	}
 	use 'onsails/lspkind.nvim'
 	use 'arkav/lualine-lsp-progress'
-	use 'ray-x/lsp_signature.nvim'
+	-- use 'ray-x/lsp_signature.nvim'
 	use 'RishabhRD/popfix'
 	use 'RishabhRD/nvim-lsputils'
 	use {

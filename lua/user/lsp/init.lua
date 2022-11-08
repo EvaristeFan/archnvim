@@ -72,9 +72,9 @@ local on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufnr)
   end
-  require "lsp_signature".on_attach({
-	  hi_parameter = "LspSignatureActiveParameter",
-  })  -- Note: add in lsp client on-attach
+  -- require "lsp_signature".on_attach({
+  --         hi_parameter = "LspSignatureActiveParameter",
+  -- })  -- Note: add in lsp client on-attach
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
