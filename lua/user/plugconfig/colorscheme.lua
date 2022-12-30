@@ -26,4 +26,4 @@ onedarkpro.setup({
 	},
 })
 
-vim.cmd("colorscheme onedarkpro")
+vim.cmd("colorscheme onedark")

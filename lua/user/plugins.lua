@@ -138,6 +138,7 @@ require('packer').startup(function(use)
 				-- Your configuration goes here
 			}
 		end,
+		commit = "1d2942cdb132eb97e7b4ccbe99b9184adf1695c4",
 		after = 'nvim-web-devicons',
 		requires = {
 			{ 'SmiteshP/nvim-navic' }, -- required for for the navic section to work
