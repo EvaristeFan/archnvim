@@ -1,4 +1,5 @@
 local cmp = require 'cmp' or {}
+local compare = require 'cmp.config.compare'
 local luasnip = require('luasnip')
 local lspkind = require('lspkind')
 
@@ -68,9 +69,20 @@ cmp.setup({
 		{ name = 'path' },
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' },
-	}
+	},
+	sorting = {
+		comparators = {
+			compare.sort_text,
+			compare.offset,
+			compare.exact,
+			compare.score,
+			compare.recently_used,
+			compare.kind,
+			compare.length,
+			compare.order,
+		}
+	},
 })
-
 -- Setup lspconfig.
 cmp.setup.cmdline(':', {
 	mapping = cmp.mapping.preset.cmdline({

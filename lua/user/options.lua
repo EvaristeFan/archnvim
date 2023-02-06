@@ -15,7 +15,7 @@ local options = {
 	undofile = true,
 	backupdir = homepath.."/Document/backupdir",
 	undodir = homepath.."/Document/undofile",
-	guifont = "FiraCode Nerd font:h14",
+	guifont = "FiraCode Nerd font:h15",
 }
 
 for k, v in pairs(options) do

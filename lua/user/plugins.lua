@@ -15,7 +15,7 @@ require('packer').startup(function(use)
 	-- UI Modify {{{
 	use "mhinz/vim-startify"
 	-- Packer
-	
+
 	-- }}}
 	use {
 		"AckslD/nvim-neoclip.lua",
@@ -119,7 +119,9 @@ require('packer').startup(function(use)
 	-- Lsp Config {{{
 	use {
 		'neovim/nvim-lspconfig', -- Collection of configurations for the built-in LSP client
-		config = function() require("user.lsp") end,
+		config = function()
+			require("user.lsp")
+		end,
 		after = { "nvim-cmp", "cmp-nvim-lsp" },
 	}
 	use 'onsails/lspkind.nvim'
