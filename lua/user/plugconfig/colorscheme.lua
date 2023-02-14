@@ -11,6 +11,7 @@ onedarkpro.setup({
 	highlights = {
 		-- Filetypes highlights
 		-- ["@field.lua"] = { fg = "${cyan}" },
+		FidgetTask = { fg = "${purple}" },
 		MatchParen = { bg = "${gray}" },
 		CursorLine = { style = "underline" },
 		CursorLineNr = { fg = "${purple}", style = "underline" },

@@ -1,17 +1,4 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
-end
-vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup({
+return {
 
 	-- FileType Plugin {{{
 	"lervag/vimtex",
@@ -127,7 +114,19 @@ require("lazy").setup({
 			"hrsh7th/cmp-nvim-lsp"
 		} },
 	"onsails/lspkind.nvim", -- cmp icons
-	"arkav/lualine-lsp-progress",
+	{
+		'j-hui/fidget.nvim',
+		config = function ()
+			require("fidget").setup({
+				align = { right = false },
+				window = {
+					blend = 0,
+					border = "rounded"
+				}
+			}
+			)
+		end
+	},
 	"RishabhRD/popfix",
 	"RishabhRD/nvim-lsputils",
 	{ "SmiteshP/nvim-navic",
@@ -193,15 +192,7 @@ require("lazy").setup({
 		ft = "tex",
 	},
 	-- }}}
-},
 
-	-- Lazy opts
-	{
-		ui = {
-			border = "rounded",
-		}
-	}
-)
-
+}
 
 -- vim: fdm=marker fdl=0

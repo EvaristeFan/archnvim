@@ -1,3 +1,4 @@
+local opts = { noremap = true, silent = true }
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
 -- If you want icons for diagnostic errors, you'll need to define them somewhere:
@@ -170,6 +171,6 @@ require("neo-tree").setup({
   }
 })
 
-vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+vim.keymap.set("n", "<c-n>", "<cmd>NeoTreeFloatToggle<cr>", opts)
 
 

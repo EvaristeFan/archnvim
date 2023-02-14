@@ -16,7 +16,6 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 -- Toggle nvim tree
-keymap("n", "<c-n>", "<cmd>NeoTreeFloatToggle<cr>", opts)
 
 -- LuaSnip keymaps
 
