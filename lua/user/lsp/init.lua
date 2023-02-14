@@ -79,13 +79,13 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'clangd', 'texlab', 'sumneko_lua', 'rust_analyzer' }
+local servers = { 'pyright', 'clangd', 'texlab', 'lua_ls', 'rust_analyzer' }
 local serversopts = {
 	pyright = {},
 	clangd = {},
 	texlab = {},
 	rust_analyzer = {},
-	sumneko_lua = {
+	lua_ls = {
 		Lua = {
 			runtime = {
 				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
@@ -157,10 +157,10 @@ local capabilities_rime = require('cmp_nvim_lsp').default_capabilities()
 
 lspconfig.rime_ls.setup {
 	init_options = {
-		enabled = false,
+		enabled = true,
 		shared_data_dir = "/usr/share/rime-data",
-		user_data_dir = "/home/pang/.local/share/rime-ls-cmp",
-		log_dir = "/home/pang/.local/share/rime-ls-log",
+		user_data_dir = "/home/utilpang/.local/share/rime-ls-cmp",
+		log_dir = "/home/utilpang/.local/share/rime-ls-log",
 		max_candidates = 9,
 		trigger_characters = {},
 	},

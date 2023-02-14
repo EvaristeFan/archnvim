@@ -4,7 +4,7 @@ local opts = { noremap = true, silent = true }
 -- Shorten function name
 local keymap = vim.keymap.set
 
-vim.g.mapleader = " "
+vim.g.mapleader = "<space>"
 vim.g.neovide_transparency = 0.8
 
 -- Common keymaps
@@ -16,7 +16,7 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 -- Toggle nvim tree
-keymap("n", "<c-n>", "<cmd>NvimTreeToggle<cr>", opts)
+keymap("n", "<c-n>", "<cmd>NeoTreeFloatToggle<cr>", opts)
 
 -- LuaSnip keymaps
 

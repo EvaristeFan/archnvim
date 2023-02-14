@@ -24,12 +24,11 @@ require('telescope').setup{
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('frecency')
 require("telescope").load_extension("ui-select")
-require("telescope").load_extension("neoclip")
 
 -- Telescope keymaps {{{
-keymap('n', '<leader>o', require('telescope').extensions.frecency.frecency, {noremap = true, silent = true})
-keymap('n', '<leader>f', require"telescope.builtin".find_files, {})
-keymap('n', '<leader>b', require"telescope.builtin".buffers, {})
+keymap('n', '<space>o', require('telescope').extensions.frecency.frecency, {noremap = true, silent = true})
+keymap('n', '<space>f', require"telescope.builtin".find_files, {})
+keymap('n', '<space>b', require"telescope.builtin".buffers, {})
 -- }}}
 
 -- vim: fdm=marker fdl=0
