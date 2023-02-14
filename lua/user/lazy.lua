@@ -21,6 +21,7 @@ require("lazy").setup({
 		build = function() vim.fn["mkdp#util#install"]() end,
 	},
 	-- }}}
+
 	-- Editor {{{
 	-- Hop.nvim
 
@@ -62,6 +63,7 @@ require("lazy").setup({
 	{ "nvim-lualine/lualine.nvim",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
+			"neovim/nvim-lspconfig",
 		},
 		config = function()
 			require("user.plugconfig.lualine")

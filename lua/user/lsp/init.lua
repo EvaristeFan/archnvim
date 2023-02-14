@@ -115,6 +115,9 @@ for _, lsp in pairs(servers) do
 	}
 end
 
+vim.g.rime_enabled = false
+
+
 local lspconfig = require('lspconfig')
 local configs = require('lspconfig.configs')
 configs.rime_ls = {
@@ -146,7 +149,7 @@ local rime_on_attach = function(client, _)
 		)
 	end
 	-- keymaps for executing command
-	vim.keymap.set('n', '<leader>rr', function() toggle_rime() end)
+	vim.keymap.set('n', '<space>rr', function() toggle_rime() end)
 	vim.keymap.set('i', '<C-x>', function() toggle_rime() end)
 	vim.keymap.set('n', '<leader>rs', function() vim.lsp.buf.execute_command({ command = "rime-ls.sync-user-data" }) end)
 end
@@ -157,10 +160,10 @@ local capabilities_rime = require('cmp_nvim_lsp').default_capabilities()
 
 lspconfig.rime_ls.setup {
 	init_options = {
-		enabled = true,
+		enabled = vim.g.rime_enabled,
 		shared_data_dir = "/usr/share/rime-data",
-		user_data_dir = "/home/utilpang/.local/share/rime-ls-cmp",
-		log_dir = "/home/utilpang/.local/share/rime-ls-log",
+		user_data_dir = "~/.local/share/rime-ls-cmp",
+		log_dir = "~/.local/share/rime-ls-log",
 		max_candidates = 9,
 		trigger_characters = {},
 	},

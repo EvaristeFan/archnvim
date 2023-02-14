@@ -9,7 +9,16 @@ require('lualine').setup {
 		globalstatus = false,
 	},
 	sections = {
-		lualine_a = { { 'mode', icons_enabled = true } },
+		lualine_a = {
+			{ 'mode', icons_enabled = true },
+			function()
+				if vim.g.rime_enabled then
+					return 'RIME'
+				else
+					return ''
+				end
+			end
+		},
 		lualine_b = { 'branch',
 			{ 'diagnostics',
 				sources = { 'nvim_lsp' },
@@ -51,7 +60,8 @@ require('lualine').setup {
 					mac = '', -- e711
 				},
 			},
-			'filetype' },
+			'filetype'
+		},
 		lualine_y = { 'progress' },
 		lualine_z = { 'location' }
 	},
