@@ -118,7 +118,6 @@ return {
 		'j-hui/fidget.nvim',
 		config = function ()
 			require("fidget").setup({
-				align = { right = false },
 				window = {
 					blend = 0,
 					border = "rounded"
