@@ -97,11 +97,11 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		dependencies = "nvim-treesitter/nvim-treesitter",
-		config = function ()
+		config = function()
 			require("user.plugconfig.treesitter")
 		end
 	},
-	{ "p00f/nvim-ts-rainbow", dependencies = "nvim-treesitter/nvim-treesitter" },
+	{ "p00f/nvim-ts-rainbow",        dependencies = "nvim-treesitter/nvim-treesitter" },
 	-- }}}
 
 	-- lsp config {{{
@@ -116,7 +116,7 @@ return {
 	"onsails/lspkind.nvim", -- cmp icons
 	{
 		'j-hui/fidget.nvim',
-		config = function ()
+		config = function()
 			require("fidget").setup({
 				window = {
 					blend = 0,
@@ -164,9 +164,9 @@ return {
 		config = function()
 			require("user.plugconfig.cmp")
 		end },
-	{ "hrsh7th/cmp-nvim-lsp", dependencies = "hrsh7th/nvim-cmp" },
-	{ "hrsh7th/cmp-path", dependencies = "hrsh7th/nvim-cmp" },
-	{ "hrsh7th/cmp-cmdline", dependencies = "hrsh7th/nvim-cmp" },
+	{ "hrsh7th/cmp-nvim-lsp",        dependencies = "hrsh7th/nvim-cmp" },
+	{ "hrsh7th/cmp-path",            dependencies = "hrsh7th/nvim-cmp" },
+	{ "hrsh7th/cmp-cmdline",         dependencies = "hrsh7th/nvim-cmp" },
 	{ "dmitmel/cmp-cmdline-history", dependencies = "hrsh7th/nvim-cmp" },
 	{
 		"L3MON4D3/LuaSnip",
@@ -192,6 +192,14 @@ return {
 	},
 	-- }}}
 
+	{
+		'glacambre/firenvim',
+		build = function() vim.fn['firenvim#install'](0) end,
+
+		-- Lazy load firenvim
+		-- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
+		cond = not not vim.g.started_by_firenvim
+	},
 }
 
 -- vim: fdm=marker fdl=0

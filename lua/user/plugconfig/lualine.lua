@@ -11,13 +11,17 @@ require('lualine').setup {
 	sections = {
 		lualine_a = {
 			{ 'mode', icons_enabled = true },
-			function()
-				if vim.g.rime_enabled then
-					return 'RIME'
-				else
-					return ''
-				end
-			end
+			{
+				function()
+					if vim.g.rime_enabled then
+						return 'RIME'
+					else
+						return ''
+					end
+				end,
+				icon = "ㄓ",
+				color = { gui = "bold" }
+			},
 		},
 		lualine_b = { 'branch',
 			{ 'diagnostics',
@@ -30,6 +34,12 @@ require('lualine').setup {
 		lualine_c = {
 			{ 'filename',
 				path = 3,
+			},
+			{
+				function()
+					return "%="
+				end,
+				separator = ''
 			},
 			{
 				function()
@@ -60,7 +70,10 @@ require('lualine').setup {
 					mac = '', -- e711
 				},
 			},
-			'filetype'
+			'filetype',
+			function()
+				return os.date("%H:%M")
+			end
 		},
 		lualine_y = { 'progress' },
 		lualine_z = { 'location' }
