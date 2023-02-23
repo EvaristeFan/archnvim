@@ -25,6 +25,9 @@ onedarkpro.setup({
 		TelescopeResultsBorder = { fg = "${cyan}" },
 		CmpItemMenu = { fg = "#af8fe9" },
 		WhichKeyFloat = { fg = "NONE" },
+		GitSignsCurrentLineBlame = { fg = "${yellow}" },
+		GitSignsAddPreview = { bg = "NONE", fg = "${green}" },
+		GitSignsDeletePreview = { bg = "NONE", fg = "${red}" },
 	},
 })
 
