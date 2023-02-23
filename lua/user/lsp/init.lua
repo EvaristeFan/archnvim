@@ -39,7 +39,7 @@ keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-	local optsbuf = { noremap = true, silent = true, buffer = bufnr }
+	local optsbuf = { noremap = true, silent = true, buffer = bufnr, desc = "Lsp operation:" }
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	keymap('n', 'gD', vim.lsp.buf.declaration, optsbuf)
@@ -149,8 +149,8 @@ local rime_on_attach = function(client, _)
 		)
 	end
 	-- keymaps for executing command
-	vim.keymap.set('n', '<space>rr', function() toggle_rime() end)
-	vim.keymap.set('i', '<C-x>', function() toggle_rime() end)
+	vim.keymap.set('n', '<space>rr', function() toggle_rime() end, { desc = "Toggle rime_ls" })
+	vim.keymap.set('i', '<C-x>', function() toggle_rime() end, { desc = "Toggle rime_ls" })
 	vim.keymap.set('n', '<leader>rs', function() vim.lsp.buf.execute_command({ command = "rime-ls.sync-user-data" }) end)
 end
 

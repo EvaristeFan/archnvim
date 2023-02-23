@@ -58,8 +58,8 @@ return {
 	-- BufferLine Plugin
 	{ "akinsho/bufferline.nvim",
 		version = "v3.*",
-		denpendencies = {
-			"nvim-tree/nvim-webdevicons",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
 			require("user.plugconfig.bufferline")
@@ -137,7 +137,10 @@ return {
 			"nvim-tree/nvim-web-devicons"
 		}, -- optional dependency
 		config = function()
-			require("barbecue").setup()
+			require("barbecue").setup(
+				{
+					context_follow_icon_color = true
+				})
 		end },
 	{
 		"folke/trouble.nvim",
@@ -150,7 +153,21 @@ return {
 			}
 		end
 	},
-
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		config = function()
+			local null_ls = require("null-ls")
+			null_ls.setup(
+				{
+					border = "rounded",
+					sources = {
+						null_ls.builtins.formatting.autopep8,
+						null_ls.builtins.formatting.bibclean,
+						null_ls.builtins.formatting.rustfmt
+					}
+				})
+		end
+	},
 
 
 	-- }}}

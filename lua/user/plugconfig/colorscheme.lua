@@ -24,6 +24,7 @@ onedarkpro.setup({
 		TelescopePreviewBorder = { fg = "${green}" },
 		TelescopeResultsBorder = { fg = "${cyan}" },
 		CmpItemMenu = { fg = "#af8fe9" },
+		WhichKeyFloat = { fg = "NONE" },
 	},
 })
 

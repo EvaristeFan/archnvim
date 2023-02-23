@@ -26,9 +26,9 @@ require('telescope').load_extension('frecency')
 require("telescope").load_extension("ui-select")
 
 -- Telescope keymaps {{{
-keymap('n', '<space>o', require('telescope').extensions.frecency.frecency, {noremap = true, silent = true})
-keymap('n', '<space>f', require"telescope.builtin".find_files, {})
-keymap('n', '<space>b', require"telescope.builtin".buffers, {})
+keymap('n', '<leader>o', require('telescope').extensions.frecency.frecency, {noremap = true, silent = true, desc = "Telescope frecency"})
+keymap('n', '<leader>f', require"telescope.builtin".find_files, { desc = "Telescope find files"})
+keymap('n', '<leader>b', require"telescope.builtin".buffers, {desc = "Buffer list"})
 -- }}}
 
 -- vim: fdm=marker fdl=0
