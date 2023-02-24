@@ -35,10 +35,10 @@ end)
 -- }}}
 
 -- Keymap for dynamic_node {{{
-vim.keymap.set({ 'i', 's' }, "<C-t>",
+vim.keymap.set({ 'i', 's' }, "<C-j>",
 	'<cmd>lua require("user.plugconfig.luasnip.utils").dynamic_node_external_update(1)<Cr>', { noremap = true })
 
-vim.keymap.set({ 'i', 's' }, "<C-g>",
+vim.keymap.set({ 'i', 's' }, "<C-k>",
 	'<cmd>lua require("user.plugconfig.luasnip.utils").dynamic_node_external_update(2)<Cr>', { noremap = true })
 ---}}}
 
