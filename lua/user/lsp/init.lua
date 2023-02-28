@@ -151,7 +151,8 @@ local rime_on_attach = function(client, _)
 	-- keymaps for executing command
 	vim.keymap.set('n', '<space>rr', function() toggle_rime() end, { desc = "Toggle rime_ls" })
 	vim.keymap.set('i', '<C-x>', function() toggle_rime() end, { desc = "Toggle rime_ls" })
-	vim.keymap.set('n', '<leader>rs', function() vim.lsp.buf.execute_command({ command = "rime-ls.sync-user-data" }) end)
+	vim.keymap.set('n', '<leader>rs',
+		function() vim.lsp.buf.execute_command({ command = "rime-ls.sync-user-data" }) end)
 end
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
@@ -164,8 +165,8 @@ lspconfig.rime_ls.setup {
 		shared_data_dir = "/usr/share/rime-data",
 		user_data_dir = "~/.local/share/rime-ls-cmp",
 		log_dir = "~/.local/share/rime-ls-log",
-		max_candidates = 9,
 		trigger_characters = {},
+		schema_trigger_character = "&" -- [since v0.2.0] 当输入此字符串时请求补全会触发 “方案选单”
 	},
 	on_attach = rime_on_attach,
 	capabilities = capabilities_rime,

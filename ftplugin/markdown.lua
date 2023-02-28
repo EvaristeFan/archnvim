@@ -4,4 +4,3 @@ vim.opt_local.formatoptions:append('t')
 vim.opt_local.formatoptions:remove('l')
 vim.opt_local.linebreak = true
 
-vim.b.maplocalleader=" "
