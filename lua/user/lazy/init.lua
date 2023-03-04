@@ -49,6 +49,9 @@ return {
 					"checkhealth",
 					"help",
 					"man",
+					"gitcommit",
+					"lazy",
+					"null-ls-info",
 					"",
 				}
 			})
