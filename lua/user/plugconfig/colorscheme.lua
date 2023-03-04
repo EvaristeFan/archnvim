@@ -28,6 +28,12 @@ onedarkpro.setup({
 		GitSignsCurrentLineBlame = { fg = "${yellow}" },
 		GitSignsAddPreview = { bg = "NONE", fg = "${green}" },
 		GitSignsDeletePreview = { bg = "NONE", fg = "${red}" },
+		IndentBlanklineIndent1 = { bg = "NONE", fg = "${red}" },
+		IndentBlanklineIndent2 = { bg = "NONE", fg = "${yellow}" },
+		IndentBlanklineIndent3 = { bg = "NONE", fg = "${green}" },
+		IndentBlanklineIndent4 = { bg = "NONE", fg = "${cyan}" },
+		IndentBlanklineIndent5 = { bg = "NONE", fg = "${blue}" },
+		IndentBlanklineIndent6 = { bg = "NONE", fg = "${orange}" },
 	},
 })
 

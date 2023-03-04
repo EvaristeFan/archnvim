@@ -12,30 +12,55 @@ return {
 	-- Editor {{{
 	-- Hop.nvim
 
-	{ "phaazon/hop.nvim",
+	{
+		"phaazon/hop.nvim",
 		config = function()
 			require("user.plugconfig.hop")
-		end },
+		end
+	},
 	-- Nvim-surround
-	{ "kylechui/nvim-surround",
+	{
+		"kylechui/nvim-surround",
 		config = function()
 			require("user.plugconfig.nvim_surround")
-		end },
+		end
+	},
 	--}}}
 
 	-- Appearance {{{
+	-- indent line
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("indent_blankline").setup({
+				-- for example, context is off by default, use this to turn it on
+				show_current_context = true,
+				char_highlight_list = {
+					"IndentBlanklineIndent1",
+					"IndentBlanklineIndent2",
+					"IndentBlanklineIndent3",
+					"IndentBlanklineIndent4",
+					"IndentBlanklineIndent5",
+					"IndentBlanklineIndent6",
+				},
+			})
+		end
+	},
 	-- Main Colorscheme
-	{ "olimorris/onedarkpro.nvim",
+	{
+		"olimorris/onedarkpro.nvim",
 		config = function()
 			require("user.plugconfig.colorscheme")
 		end,
-		lazy = false, },
+		lazy = false,
+	},
 
 	{ "nvim-tree/nvim-web-devicons" }, -- icons
 
 	--File tree
 
-	{ "nvim-neo-tree/neo-tree.nvim",
+	{
+		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -44,26 +69,31 @@ return {
 		},
 		config = function()
 			require("user.plugconfig.neotree")
-		end, },
+		end,
+	},
 
 	-- Lualine
-	{ "nvim-lualine/lualine.nvim",
+	{
+		"nvim-lualine/lualine.nvim",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 			"neovim/nvim-lspconfig",
 		},
 		config = function()
 			require("user.plugconfig.lualine")
-		end, },
+		end,
+	},
 	-- BufferLine Plugin
-	{ "akinsho/bufferline.nvim",
+	{
+		"akinsho/bufferline.nvim",
 		version = "v3.*",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
 			require("user.plugconfig.bufferline")
-		end, },
+		end,
+	},
 	-- }}}
 
 	-- Telscope and extensions {{{
@@ -79,7 +109,8 @@ return {
 	-- extensions of fzf native
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
-		build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+		build =
+		'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
 	},
 
 	-- extensions of frecency
@@ -105,14 +136,16 @@ return {
 	-- }}}
 
 	-- lsp config {{{
-	{ 'neovim/nvim-lspconfig',
+	{
+		'neovim/nvim-lspconfig',
 		config = function()
 			require("user.lsp")
 		end,
 		dependencies = {
 			"hrsh7th/nvim-cmp",
 			"hrsh7th/cmp-nvim-lsp"
-		} },
+		}
+	},
 	"onsails/lspkind.nvim", -- cmp icons
 	{
 		'j-hui/fidget.nvim',
@@ -128,9 +161,12 @@ return {
 	},
 	"RishabhRD/popfix",
 	"RishabhRD/nvim-lsputils",
-	{ "SmiteshP/nvim-navic",
-		requires = "neovim/nvim-lspconfig" },
-	{ "utilyre/barbecue.nvim",
+	{
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig"
+	},
+	{
+		"utilyre/barbecue.nvim",
 		name = "barbecue",
 		dependencies = {
 			"SmiteshP/nvim-navic",
@@ -141,7 +177,8 @@ return {
 				{
 					context_follow_icon_color = true
 				})
-		end },
+		end
+	},
 	{
 		"folke/trouble.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons",
@@ -173,14 +210,16 @@ return {
 	-- }}}
 
 	-- Cmp completion {{{
-	{ "hrsh7th/nvim-cmp",
+	{
+		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"L3MON4D3/LuaSnip",
 			"nvim-treesitter/nvim-treesitter"
 		},
 		config = function()
 			require("user.plugconfig.cmp")
-		end },
+		end
+	},
 	{ "hrsh7th/cmp-nvim-lsp",        dependencies = "hrsh7th/nvim-cmp" },
 	{ "hrsh7th/cmp-path",            dependencies = "hrsh7th/nvim-cmp" },
 	{ "hrsh7th/cmp-cmdline",         dependencies = "hrsh7th/nvim-cmp" },
@@ -191,11 +230,13 @@ return {
 			require("user.plugconfig.luasnip")
 		end
 	},
-	{ "saadparwaiz1/cmp_luasnip",
+	{
+		"saadparwaiz1/cmp_luasnip",
 		dependencies = {
 			"hrsh7th/nvim-cmp",
 			"L3MON4D3/LuaSnip"
-		} },
+		}
+	},
 	{
 		"iurimateus/luasnip-latex-snippets.nvim",
 		-- replace "lervag/vimtex" with "nvim-treesitter/nvim-treesitter" if you're
@@ -211,7 +252,6 @@ return {
 
 	{
 		'glacambre/firenvim',
-
 		-- Lazy load firenvim
 		-- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
 		cond = not not vim.g.started_by_firenvim,
