@@ -43,6 +43,14 @@ return {
 					"IndentBlanklineIndent5",
 					"IndentBlanklineIndent6",
 				},
+				filetype_exclude = {
+					"tex",
+					"lspinfo",
+					"checkhealth",
+					"help",
+					"man",
+					"",
+				}
 			})
 		end
 	},
