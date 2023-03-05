@@ -79,7 +79,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'clangd', 'texlab', 'lua_ls', 'rust_analyzer' }
+local servers = { 'pyright', 'clangd', 'texlab', 'lua_ls', 'rust_analyzer', 'marksman' }
 local serversopts = {
 	pyright = {},
 	clangd = {},
