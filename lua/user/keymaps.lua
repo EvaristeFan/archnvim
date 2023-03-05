@@ -7,7 +7,7 @@ local keymap = vim.keymap.set
 keymap("n", "<Space>", "<Nop>", { silent = true, remap = false })
 
 vim.g.mapleader = " "
-vim.g.neovide_transparency = 0.8
+vim.g.neovide_transparency = 0.7
 
 -- Common keymaps
 keymap("n", "S", "<cmd>w<cr>", opts)

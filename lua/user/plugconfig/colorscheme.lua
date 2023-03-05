@@ -14,7 +14,7 @@ onedarkpro.setup({
 		FidgetTask = { fg = "${purple}" },
 		MatchParen = { bg = "${gray}" },
 		CursorLine = { style = "underline" },
-		CursorLineNr = { fg = "${purple}", style = "underline" },
+		CursorLineNr = { fg = "${purple}", style = "bold" },
 		TSAAAEmphasis = { fg = "${purple}" },
 		TSAAAReference = { bg = "${gray}", fg = "${yellow}" },
 		LspSignatureActiveParameter = { bg = "${gray}", fg = "${purple}" },
