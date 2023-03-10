@@ -35,6 +35,7 @@ return {
 			require("user.plugconfig.colorscheme")
 		end,
 		lazy = false,
+		priority = 1000,
 	},
 
 	{ "nvim-tree/nvim-web-devicons" }, -- icons
