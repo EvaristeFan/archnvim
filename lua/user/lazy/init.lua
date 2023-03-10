@@ -212,7 +212,8 @@ return {
 					sources = {
 						null_ls.builtins.formatting.autopep8,
 						null_ls.builtins.formatting.bibclean,
-						null_ls.builtins.formatting.rustfmt
+						null_ls.builtins.formatting.rustfmt,
+						null_ls.builtins.formatting.astyle,
 					}
 				})
 		end

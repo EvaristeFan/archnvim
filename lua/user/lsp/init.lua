@@ -54,7 +54,7 @@ local on_attach = function(client, bufnr)
 	keymap('n', '<space>sy', vim.lsp.buf.document_symbol, optsbuf)
 	keymap('n', '<space>ca', vim.lsp.buf.code_action, optsbuf)
 	keymap('n', 'gr', vim.lsp.buf.references, optsbuf)
-	keymap('n', '<space>f', function() vim.lsp.buf.format { async = true } end, optsbuf)
+	keymap('n', '<space>lf', function() vim.lsp.buf.format { async = true } end, optsbuf)
 	vim.api.nvim_create_autocmd("CursorHold", {
 		buffer = bufnr,
 		callback = function()
