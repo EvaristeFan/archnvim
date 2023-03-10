@@ -28,36 +28,6 @@ return {
 	--}}}
 
 	-- Appearance {{{
-	-- indent line
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("indent_blankline").setup({
-				-- for example, context is off by default, use this to turn it on
-				show_current_context = true,
-				use_treesitter = true,
-				char_highlight_list = {
-					"IndentBlanklineIndent1",
-					"IndentBlanklineIndent2",
-					"IndentBlanklineIndent3",
-					"IndentBlanklineIndent4",
-					"IndentBlanklineIndent5",
-					"IndentBlanklineIndent6",
-				},
-				filetype_exclude = {
-					"tex",
-					"lspinfo",
-					"checkhealth",
-					"help",
-					"man",
-					"gitcommit",
-					"lazy",
-					"null-ls-info",
-					"",
-				}
-			})
-		end
-	},
 	-- Main Colorscheme
 	{
 		"olimorris/onedarkpro.nvim",
@@ -84,17 +54,6 @@ return {
 		end,
 	},
 
-	-- Lualine
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-			"neovim/nvim-lspconfig",
-		},
-		config = function()
-			require("user.plugconfig.lualine")
-		end,
-	},
 	-- BufferLine Plugin
 	{
 		"akinsho/bufferline.nvim",
