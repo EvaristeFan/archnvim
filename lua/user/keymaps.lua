@@ -4,9 +4,9 @@ local opts = { noremap = true, silent = true }
 -- Shorten function name
 local keymap = vim.keymap.set
 
-keymap("n", "<Space>", "<Nop>", { silent = true, remap = false })
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.g.neovide_transparency = 0.7
 
 -- Common keymaps
