@@ -17,7 +17,7 @@ return {
 		config = function()
 			require("user.plugconfig.hop")
 		end
-	},
+	}, --}}}
 
 	-- Appearance {{{
 	-- Main Colorscheme
@@ -47,7 +47,13 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
-			require("user.plugconfig.bufferline")
+			require("bufferline").setup {
+				options = {
+					numbers = "buffer_id",
+					offsets = { { filetype = "neo-tree", text = "File Explorer", text_align =
+					"center" } },                                 -- | function , text_align = "left" | "center" | "right"}},
+				}
+			}
 		end,
 	},
 	-- }}}
