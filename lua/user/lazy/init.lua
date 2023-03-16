@@ -18,14 +18,6 @@ return {
 			require("user.plugconfig.hop")
 		end
 	},
-	-- Nvim-surround
-	{
-		"kylechui/nvim-surround",
-		config = function()
-			require("user.plugconfig.nvim_surround")
-		end
-	},
-	--}}}
 
 	-- Appearance {{{
 	-- Main Colorscheme
