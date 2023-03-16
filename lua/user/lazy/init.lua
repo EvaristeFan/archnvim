@@ -1,10 +1,8 @@
 return {
 
 	-- FileType Plugin {{{
-	"lervag/vimtex",
 	{
 		"iamcco/markdown-preview.nvim",
-		config = function() require("user.plugconfig.vimtex") end,
 		build = function() vim.fn["mkdp#util#install"]() end,
 	},
 	-- }}}
