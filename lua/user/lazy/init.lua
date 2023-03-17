@@ -7,16 +7,6 @@ return {
 	},
 	-- }}}
 
-	-- Editor {{{
-	-- Hop.nvim
-
-	{
-		"phaazon/hop.nvim",
-		config = function()
-			require("user.plugconfig.hop")
-		end
-	}, --}}}
-
 	-- Appearance {{{
 	-- Main Colorscheme
 
