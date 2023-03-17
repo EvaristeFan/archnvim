@@ -140,12 +140,6 @@ return {
 	{ "hrsh7th/cmp-cmdline",         dependencies = "hrsh7th/nvim-cmp" },
 	{ "dmitmel/cmp-cmdline-history", dependencies = "hrsh7th/nvim-cmp" },
 	{
-		"L3MON4D3/LuaSnip",
-		config = function()
-			require("user.plugconfig.luasnip")
-		end
-	},
-	{
 		"saadparwaiz1/cmp_luasnip",
 		dependencies = {
 			"hrsh7th/nvim-cmp",
