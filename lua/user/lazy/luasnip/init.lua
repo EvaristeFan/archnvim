@@ -39,11 +39,15 @@ return {
 
 		-- Keymap for dynamic_node {{{
 		vim.keymap.set({ 'i', 's' }, "<C-j>",
-			'<cmd>lua require("user.lazy.luasnip.utils").dynamic_node_external_update(1)<Cr>',
+			function()
+				require("user.lazy.luasnip.utils").dynamic_node_external_update(1)
+			end,
 			{ noremap = true })
 
 		vim.keymap.set({ 'i', 's' }, "<C-k>",
-			'<cmd>lua require("user.lazy.luasnip.utils").dynamic_node_external_update(2)<Cr>',
+			function()
+				require("user.lazy.luasnip.utils").dynamic_node_external_update(2)
+			end,
 			{ noremap = true })
 	end
 }
