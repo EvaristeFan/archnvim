@@ -1,5 +1,6 @@
 return {
 	"phaazon/hop.nvim",
+	event = "VeryLazy",
 	config = function()
 		local keymap = vim.keymap.set
 		require 'hop'.setup {}

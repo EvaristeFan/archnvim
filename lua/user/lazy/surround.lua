@@ -19,6 +19,7 @@ return {
 			move_cursor = false,
 			-- Configuration here, or leave empty to use defaults
 		})
-	end
+	end,
+	event = "VeryLazy",
 }
 --}}}
