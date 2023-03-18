@@ -13,7 +13,7 @@ return {
 		local has_words_before = function()
 			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 			return col ~= 0 and
-			vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+			    vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 		end
 
 		cmp.setup({
@@ -71,6 +71,19 @@ return {
 						fallback()
 					end
 				end, { "i", "s" }),
+				-- Rime
+				['<Space>'] = cmp.mapping(function(fallback)
+					local entry = cmp.get_selected_entry()
+					if entry and entry.source.name == "nvim_lsp"
+					    and entry.source.source.client.name == "rime_ls" then
+						cmp.confirm({
+							behavior = cmp.ConfirmBehavior.Replace,
+							select = true,
+						})
+					else
+						fallback()
+					end
+				end, { 'i', 's' }),
 			},
 			sources = {
 				-- { name = 'buffer' },
