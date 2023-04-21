@@ -166,7 +166,9 @@ lspconfig.rime_ls.setup {
 		user_data_dir = "~/.local/share/rime-ls-cmp",
 		log_dir = "~/.local/share/rime-ls-log",
 		trigger_characters = {},
-		schema_trigger_character = "&" -- [since v0.2.0] 当输入此字符串时请求补全会触发 “方案选单”
+		schema_trigger_character = "&", -- [since v0.2.0] 当输入此字符串时请求补全会触发 “方案选单”
+		always_incomplete = true,
+		preselect_first = true,
 	},
 	on_attach = rime_on_attach,
 	capabilities = capabilities_rime,
