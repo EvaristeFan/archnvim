@@ -94,7 +94,7 @@ local pac_snippet = s(-- {{{
 	"pac",
 	fmt([[
 	\usepackage{}{{{}}}
-	]], { c(1, { t(""), fmt("[{}]", i(1)) }), i(2, "packagename") })) --}}}
+	]], { c(1, { t(""), r(1, "pacopt", sn(nil, {t("["), i(1, "pacopt"), t("]")})) }), i(2, "packagename") })) --}}}
 
 local beg_snippet = s(-- {{{
 	"beg",

@@ -1,6 +1,6 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
-	branch = "v2.x",
+	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -67,19 +67,38 @@ return {
 						added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
 						modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
 						deleted   = "✖", -- this can only be used in the git_status source
-						renamed   = "", -- this can only be used in the git_status source
+						renamed   = "󰁕", -- this can only be used in the git_status source
 						-- Status type
 						untracked = "",
 						ignored   = "",
-						unstaged  = "",
+						unstaged  = "󰄱",
 						staged    = "",
 						conflict  = "",
 					}
 				},
+				file_size = {
+					enabled = true,
+					required_width = 64, -- min width of window required to show this column
+				},
+				type = {
+					enabled = true,
+					required_width = 122, -- min width of window required to show this column
+				},
+				last_modified = {
+					enabled = true,
+					required_width = 88, -- min width of window required to show this column
+				},
+				created = {
+					enabled = true,
+					required_width = 110, -- min width of window required to show this column
+				},
+				symlink_target = {
+					enabled = false,
+				},
 			},
 			window = {
-				position = "left",
-				width = 40,
+				position = "float",
+				width = 80,
 				mapping_options = {
 					noremap = true,
 					nowait = true,
@@ -117,7 +136,10 @@ return {
 						--".null-ls_*",
 					},
 				},
-				follow_current_file = false, -- This will find and focus the file in the active buffer every
+				follow_current_file ={
+					enabled = false,
+					leave_dirs_open = false,
+				}, -- This will find and focus the file in the active buffer every
 				-- time the current file is changed while the tree is open.
 				group_empty_dirs = false, -- when true, empty folders will be grouped together
 				hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
@@ -142,7 +164,10 @@ return {
 				}
 			},
 			buffers = {
-				follow_current_file = true, -- This will find and focus the file in the active buffer every
+				follow_current_file = {
+					enabled = true,
+					leave_dirs_open = false
+				}, -- This will find and focus the file in the active buffer every
 				-- time the current file is changed while the tree is open.
 				group_empty_dirs = true, -- when true, empty folders will be grouped together
 				show_unloaded = true,
@@ -170,6 +195,6 @@ return {
 			}
 		})
 
-		vim.keymap.set("n", "<c-n>", "<cmd>NeoTreeFloatToggle<cr>", opts)
+		vim.keymap.set("n", "<c-n>", "<cmd>Neotree toggle=true reveal=true<CR>", opts)
 	end,
 }
