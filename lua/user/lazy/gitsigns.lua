@@ -3,6 +3,8 @@ return {
 	config = function()
 		require('gitsigns').setup(
 			{
+				show_deleted = true,
+				word_diff = true,
 				current_line_blame = true,
 				current_line_blame_opts = {
 					virt_text = true,
